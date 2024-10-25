@@ -1,0 +1,121 @@
+---
+import gsap from "gsap";
+import { Picture } from "astro:assets";
+import event from '../categoryImages/ITB-messe-fotografie.jpg';
+import portrait from '../categoryImages/mitarbeiterkampagne-takeda-berlin.jpg';
+import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
+---
+<section class="category">
+
+  <article class="category-container-1">
+    <h3>Eventfotografie</h3>
+    <div class:list={["category-content", "links"]}>
+      <p class="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
+      <Picture class="category-image" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
+    </div>
+  </article>
+
+  <article class="category-container-2">
+    <h3>Businessportraits</h3>
+
+    <div class:list={["category-content", "rechts"]}>
+      <Picture class="category-image" src={portrait} alt="Mitarbeiter Porträt mit Kollegen im Hintergrund"/>
+      <p class="category-text">Authentische Businessportraits sind entscheidend für den Erfolg Ihres Unternehmens. Ob für Webseite, LinkedIn oder PR – ich schaffe Bilder, die Kompetenz und Persönlichkeit zeigen. In entspannter Atmosphäre entstehen Aufnahmen, die Ihre Individualität und Unternehmenswerte unterstreichen. Zeigen Sie, wer hinter Ihrem Erfolg steht.</p>
+    </div>
+  </article>
+
+  <article class="category-container-3">
+    <h3>Emotionale Bildreportagen</h3>
+    <div class:list={["category-content", "links"]}>
+      <p class="category-text">Die kleinen Momente erzählen oft die größten Geschichten. Mit emotionalen Bildreportagen fange ich echte Emotionen und authentische Augenblicke ein. Jede Bildserie verbindet den Betrachter emotional mit dem Erlebten und lässt die Gefühle des Augenblicks lebendig werden.</p>
+      <Picture class="category-image" src={reportage} alt="Restaurator Michael Wintjen in seiner Werkstatt"/>
+    </div>
+  </article>
+
+</section>
+
+
+<style>
+  .category {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+    margin: 0 auto;
+  }
+
+  .category-content {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .links {
+    grid-template-columns: 45fr 65fr;
+  }
+
+  .rechts {
+    grid-template-columns: 65fr 45fr;
+  }
+
+  .category-text {
+    place-content: center;
+  }
+
+  .category-image {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  h3 {
+    margin-bottom: var(--space-l);
+    text-align: center;
+  }
+  
+</style>
+
+
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".category-container-1", {
+    scrollTrigger: {
+    trigger: ".category-container-1",
+    start: "top 80%",
+    },
+    stagger: {
+      each: 0.5,
+    },
+    duration: 3,
+    opacity: 0,
+    y: "5rem",
+    ease: "power4.out",
+
+  });
+
+  gsap.from(".category-container-2", {
+    scrollTrigger: {
+    trigger: ".category-container-2",
+    start: "top 80%",
+    },
+    duration: 3,
+    opacity: 0,
+    y: "5rem",
+    ease: "power4.out",
+
+  });
+
+  gsap.from(".category-container-3", {
+    scrollTrigger: {
+    trigger: ".category-container-3",
+    start: "top 80%",
+    },
+    duration: 3,
+    opacity: 0,
+    y: "5rem",
+    ease: "power4.out",
+
+  });
+</script>

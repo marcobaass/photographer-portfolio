@@ -1,0 +1,68 @@
+---
+
+---
+<div class="container-headers">
+  <h1 id="left-text">Authentische Momente</h1>
+  <h1 id="right-text">professionell eingefangen</h1>
+</div>
+
+
+<style>
+  .container-headers {
+    max-width: 800px;
+    gap: var(--space-xl);
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  #left-text {
+    text-align: center;
+    margin-top: var(--space-xl-2xl);
+  }
+
+  #right-text {
+    text-align: center;
+    margin-bottom: var(--space-xl-2xl);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  let mm = gsap.matchMedia();
+
+  mm.add("(min-width: 320px", () => {
+
+    gsap.from("#left-text", {
+      scrollTrigger: {
+        trigger: "#left-text",
+        start:"-100 75%",      //100px über element & mitte des viewports
+        end:"300 75%",         //100px unter element & mitte des viewports
+        id: "left-text",
+        markers: true,
+        scrub: 2,
+      },
+      x: "22%",                  // Wie weit sich element insgesamt bewegt
+    });
+
+    gsap.from("#right-text", {
+      scrollTrigger: {
+        trigger: "#right-text",
+        start:"-100 75%",
+        end:"300 75%",
+        id: "right-text",
+        markers: true,
+        scrub: 2,
+      },
+      x: "-22%",
+    });
+
+  })
+</script>

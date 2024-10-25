@@ -1,0 +1,25 @@
+---
+import ImageSlider from "../components/ImageSlider.astro";
+import IntroPhrases from "../components/IntroPhrases.astro";
+import CategoryFadeIn from "../components/categoryFadeIn.astro";
+import Navbar from "../components/Navbar.astro";
+import '../components/style.css';
+
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+    <Navbar/>
+    <ImageSlider />
+    <IntroPhrases/>
+    <CategoryFadeIn />
+  </body>
+</html>

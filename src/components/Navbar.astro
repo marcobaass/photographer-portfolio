@@ -1,0 +1,197 @@
+---
+
+---
+<nav class='navbar'>
+  <ul>
+    <li><a href="/" class="hover-underline-animation center">Leistung</a></li>
+    <li><a href="/" class="hover-underline-animation center">Portfolio</a></li>
+    <li><a href="/" class="hover-underline-animation center">Über mich</a></li>
+    <li><a href="/" class="hover-underline-animation center">Kontakt</a></li>
+  </ul>
+</nav>
+
+<nav class="hamburger">
+  <label class="hamburger-menu">
+    <input type="checkbox">
+  </label>
+  <aside class="sidebar">
+      <ul>
+        <li><a href="/" class="hover-underline-animation center">Leistung</a></li>
+        <li><a href="/" class="hover-underline-animation center">Portfolio</a></li>
+        <li><a href="/" class="hover-underline-animation center">Über mich</a></li>
+        <li><a href="/" class="hover-underline-animation center">Kontakt</a></li>
+      </ul>
+  </aside>
+</nav>
+
+
+<style>
+  .hamburger-menu {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+    z-index: 11;
+  }
+
+  .navbar {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    list-style: none;
+    z-index: 50;
+    background-color: var(--clr-bg-op);
+    padding: 1.25rem 0 1.25rem;
+  }
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.25rem;
+    margin-right: 3rem;
+    margin-left: auto;
+  }
+
+  a {
+    color: var(--clr-font-dark);
+    font-size: var(--step-0);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+  }
+
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--clr-font-dark);
+    transition: transform 0.35s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+  }
+
+  .hover-underline-animation.center::after {
+    transform-origin: bottom center;
+  }
+
+  .hover-underline-animation.center:hover::after {
+    transform-origin: bottom center;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .navbar {
+      display: none;
+    }
+
+    :root {
+    --bar-width: 40px;
+    --bar-heigth: 6px;
+    --hamburger-gap: 6px;
+    --foreground: #333;
+    --background: white;
+    --hamburger-margin: 15px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-heigth) * 3 + var(--hamburger-gap) * 2);
+    }
+
+    .hamburger-menu {
+      --x-width: calc(var(--hamburger-height) * 1.41421356237);
+      display: flex;
+      flex-direction: column;
+      gap: var(--hamburger-gap);
+      width: max-content;
+      position: fixed;
+      top: var(--hamburger-margin);
+      left: var(--hamburger-margin);
+      z-index: 21;
+      cursor: pointer
+    }
+
+    .hamburger-menu:has(input:checked) {
+      --foreground: white;
+      --background: #333;
+    }
+
+    .hamburger-menu:has(input:focus-visible)::before,
+    .hamburger-menu:has(input:focus-visible)::after,
+    .hamburger-menu input:focus-visible {
+      border: 1px solid var(--background);
+      box-shadow: 0 0 0 1px var(--foreground);
+    }
+
+    .hamburger-menu::before,
+    .hamburger-menu::after,
+    .hamburger-menu input {
+      content: "";
+      width: var(--bar-width);
+      height: var(--bar-heigth);
+      background-color: var(--foreground);
+      border-radius: 9999px;
+      transform-origin: left center;
+      transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
+    }
+
+    .hamburger-menu input {
+      appearance: none;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      pointer-events: none;
+    }
+
+    .hamburger-menu:has(input:checked)::before {
+      rotate: 45deg;
+      width: var(--x-width);
+      translate: 0 calc(var(--bar-heigth) / -2);
+    }
+
+    .hamburger-menu:has(input:checked)::after {
+      rotate: -45deg;
+      width: var(--x-width);
+      translate: 0 calc(var(--bar-heigth) / 2);
+    }
+
+    .hamburger-menu input:checked {
+      opacity: 0;
+      width: 0;
+    }
+
+    .sidebar {
+      position: fixed;
+      display: flex;
+      transition: translate var(--animation-timing);
+      translate: -100%;
+      padding: 0.5rem 1rem;
+      padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+      background-color: var(--foreground);
+      max-width: 100%;
+      min-height: 100vh;
+    }
+
+    ul {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    a {
+      color: var(--background);
+    }
+
+    .hamburger-menu:has(input:checked) + .sidebar {
+      translate: 0;
+    }
+  }
+
+</style>
