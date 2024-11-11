@@ -5,13 +5,13 @@ import event from '../categoryImages/ITB-messe-fotografie.jpg';
 import portrait from '../categoryImages/mitarbeiterkampagne-takeda-berlin.jpg';
 import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 ---
-<section class="category">
+<section class="category" id="leistung">
 
   <article class="category-container-1">
     <h3>Eventfotografie</h3>
     <div class:list={["category-content", "links"]}>
-      <p class="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
-      <Picture class="category-image" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
+      <p class:list="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
+      <Picture class="category-image-1" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
     </div>
   </article>
 
@@ -19,7 +19,7 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     <h3>Businessportraits</h3>
 
     <div class:list={["category-content", "rechts"]}>
-      <Picture class="category-image" src={portrait} alt="Mitarbeiter Porträt mit Kollegen im Hintergrund"/>
+      <Picture class="category-image-2" src={portrait} alt="Mitarbeiter Porträt mit Kollegen im Hintergrund"/>
       <p class="category-text">Authentische Businessportraits sind entscheidend für den Erfolg Ihres Unternehmens. Ob für Webseite, LinkedIn oder PR – ich schaffe Bilder, die Kompetenz und Persönlichkeit zeigen. In entspannter Atmosphäre entstehen Aufnahmen, die Ihre Individualität und Unternehmenswerte unterstreichen. Zeigen Sie, wer hinter Ihrem Erfolg steht.</p>
     </div>
   </article>
@@ -28,7 +28,7 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     <h3>Emotionale Bildreportagen</h3>
     <div class:list={["category-content", "links"]}>
       <p class="category-text">Die kleinen Momente erzählen oft die größten Geschichten. Mit emotionalen Bildreportagen fange ich echte Emotionen und authentische Augenblicke ein. Jede Bildserie verbindet den Betrachter emotional mit dem Erlebten und lässt die Gefühle des Augenblicks lebendig werden.</p>
-      <Picture class="category-image" src={reportage} alt="Restaurator Michael Wintjen in seiner Werkstatt"/>
+      <Picture class="category-image-3" src={reportage} alt="Restaurator Michael Wintjen in seiner Werkstatt"/>
     </div>
   </article>
 
@@ -36,8 +36,14 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 
 
 <style>
+  .border-l-shape {
+    border-left: 1px solid black;
+    padding-bottom: 2rem;
+  }
+
   .category {
-    max-width: 800px;
+    position: relative;
+    max-width: calc(var(--space-m) + 800px);
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-xl);
@@ -47,6 +53,7 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
   .category-content {
     display: grid;
     gap: var(--space-2xl);
+    margin: 0 var(--space-m);
   }
 
   .links {
@@ -61,7 +68,9 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     place-content: center;
   }
 
-  .category-image {
+  .category-image-1,
+  .category-image-2,
+  .category-image-3 {
     width: 100%;
     border-radius: 16px;
   }
@@ -70,7 +79,16 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     margin-bottom: var(--space-l);
     text-align: center;
   }
-  
+
+  @media only screen and (max-width: 720px) {
+    .links {
+      grid-template-columns: 1fr;
+    }
+    .rechts {
+      grid-template-columns: 1fr;
+    }
+  }
+
 </style>
 
 
@@ -118,4 +136,41 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     ease: "power4.out",
 
   });
+
+  gsap.from(".category-image-1", {
+    scrollTrigger: {
+      trigger: ".category-image-1",
+        start:"-100 75%",      //100px über element & mitte des viewports
+        end:"300 75%",         //100px unter element & mitte des viewports
+        id: "left-text",
+        markers: false,
+        scrub: 2,
+    },
+    scale: .75,
+  })
+
+  gsap.from(".category-image-2", {
+    scrollTrigger: {
+      trigger: ".category-image-2",
+        start:"-100 75%",      //100px über element & mitte des viewports
+        end:"300 75%",         //100px unter element & mitte des viewports
+        id: "left-text",
+        markers: false,
+        scrub: 2,
+    },
+    scale: .75,
+  })
+
+  gsap.from(".category-image-3", {
+    scrollTrigger: {
+      trigger: ".category-image-3",
+        start:"-100 75%",      //100px über element & mitte des viewports
+        end:"300 75%",         //100px unter element & mitte des viewports
+        id: "left-text",
+        markers: false,
+        scrub: 2,
+    },
+    scale: .75,
+  })
+
 </script>

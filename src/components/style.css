@@ -58,6 +58,7 @@ select {
 
 :root {
   --clr-bg: #EAEBE6;
+  --clr-bg-lt: hsl(72, 11%, 94%);
   --clr-bg-op: rgba(234, 235, 230, 0.500);
 
   --clr-font-dark: rgb(20, 20, 20);

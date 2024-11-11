@@ -1,0 +1,139 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+// Import all images and load their metadata asynchronously
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/*.{jpeg,jpg,png,gif}');
+const imageMetadata = await Promise.all(
+  Object.values(images).map(async (imageImport) => await imageImport())
+);
+---
+
+<section class="portfolioImages" id="portfolioImages">
+  <div class="portfolioStream">
+    {imageMetadata.map((image, index) => (
+      <div class="portfolioSlide">
+        <Image class="image" src={image.default} alt={`Gallery Image ${index + 1}`} />
+      </div>
+    ))}
+  </div>
+</section>
+
+<div id="modal" class="modal">
+  <div class="modalContent">
+    <img id="modalImg" class="modalImg" />
+    <button id="next">hallo</button>
+    <button id="prev">hallo</button>
+    <button id="close">x</button>
+  </div>
+</div>
+
+<style>
+  .portfolioImages {
+    margin: var(--space-xl-2xl);
+  }
+
+
+  .portfolioStream {
+    position: relative;
+    column-count: 5;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+
+  }
+
+  .image {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .image:hover {
+    cursor: zoom-in;
+  }
+
+  .modal {
+    display: none; /* Hide initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(234, 235, 230, 0.8); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .modalContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalImg {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  #next {
+    display: none;
+  }
+
+  #prev {
+    display: none;
+  }
+
+  #close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+</style>
+
+<script>
+  const images = document.querySelectorAll('.image');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const close = document.getElementById('close');
+
+  images.forEach((img) => {
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = e.target as HTMLElement;
+
+      modalImg.src = target.src;
+
+      modal.style.display = 'flex';
+
+      document.body.style.overflow = 'hidden';
+    })
+  })
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+
+      document.body.style.overflow = '';
+    }
+  })
+
+  close.addEventListener('click', (e) => {
+    modal.style.display = 'none';
+
+    document.body.style.overflow = '';
+  })
+</script>
