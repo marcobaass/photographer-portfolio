@@ -1,18 +1,32 @@
 ---
 
 ---
-<div class="container-headers">
-  <h1 id="left-text">Authentische Momente</h1>
-  <h1 id="right-text">professionell eingefangen</h1>
+<div class=" container-bg">
+  <div class="container-headers container-bg">
+    <h1 id="left-text">Authentische Momente</h1>
+    <h1 id="right-text">professionell eingefangen</h1>
+  </div>
 </div>
 
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+
+  h1 {
+    font-family: "Mate SC", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
   .container-headers {
     max-width: 800px;
     gap: var(--space-xl);
     margin: 0 auto;
     overflow: hidden;
+  }
+
+  .container-bg {
+    background-color: var(--clr-bg-dark-full);
   }
 
   #left-text {
