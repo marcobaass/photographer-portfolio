@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import me from '../aboutMeImage/marco_baass.jpg'
+---
+<article id="aboutMe">
+
+  <Image src={ me } alt="" class='img' />
+
+  <h2>Über mich</h2>
+  <p>
+    Seit über 15 Jahren arbeite und lebe ich als professioneller Fotograf in Berlin und habe mich auf Eventfotografie, Porträtaufnahmen und Auftragsarbeiten für Magazine und Zeitschriften spezialisiert. Mein Ziel ist es, die Essenz eines Moments einzufangen – sei es auf Firmenveranstaltungen, Gala-Events oder in individuellen Porträtsessions. Mit einem besonderen Gespür für die richtige Szene und authentische Emotionen schaffe ich Bilder, die nachhaltig wirken und Geschichten erzählen.
+  </p>
+
+  <p>
+    Von der Dokumentation von Firmenevents bis zur professionellen Porträtfotografie: Ich sorge dafür, dass Sie und Ihre Veranstaltung im besten Licht erscheinen. Meine langjährige Erfahrung im Bereich der Magazin- und Zeitschriftenfotografie hilft mir dabei, die Atmosphäre einer Szene zu erfassen und Menschen in einem natürlichen, ausdrucksstarken Moment darzustellen. Ich freue mich darauf, meine Leidenschaft und Expertise in Ihre Projekte einzubringen und Ihnen Bilder zu liefern, die die Erinnerung an Ihre wertvollen Augenblicke lebendig halten.
+  </p>
+</article>
+
+<style>
+  article {
+    margin: var(--space-l) auto;
+    text-wrap: pretty;
+    max-width: 75ch;
+  }
+
+  .img {
+    max-width: 240px;
+    border-radius:64px 0 64px 0;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    transform: translateY(0.4em)
+  }
+
+  p {
+    margin: 0 0 1em 0;
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+  }
+</style>
