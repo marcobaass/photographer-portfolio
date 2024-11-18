@@ -7,28 +7,56 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 ---
 <section class="category" id="leistung">
 
+  <div class="categoryTopWave">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+
   <article class="category-container-1">
-    <h3>Eventfotografie</h3>
-    <div class:list={["category-content", "links"]}>
-      <p class:list="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
-      <Picture class="category-image-1" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
+    <div class="wrapperEvent">
+      <h3>Eventfotografie</h3>
+      <div class:list={["category-content", "links"]}>
+        <p class:list="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
+        <Picture class="category-image-1" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
+      </div>
     </div>
   </article>
+
 
   <article class="category-container-2">
-    <h3>Businessportraits</h3>
 
-    <div class:list={["category-content", "rechts"]}>
-      <Picture class="category-image-2" src={portrait} alt="Mitarbeiter Porträt mit Kollegen im Hintergrund"/>
-      <p class="category-text">Authentische Businessportraits sind entscheidend für den Erfolg Ihres Unternehmens. Ob für Webseite, LinkedIn oder PR – ich schaffe Bilder, die Kompetenz und Persönlichkeit zeigen. In entspannter Atmosphäre entstehen Aufnahmen, die Ihre Individualität und Unternehmenswerte unterstreichen. Zeigen Sie, wer hinter Ihrem Erfolg steht.</p>
+    <div class="businessTop">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+      </svg>
     </div>
+
+    <div class="businessportraits">
+      <h3 class="light">Businessportraits</h3>
+      <div class:list={["category-content", "rechts"]}>
+        <Picture class="category-image-2" src={portrait} alt="Mitarbeiter Porträt mit Kollegen im Hintergrund"/>
+        <p class:list={["category-text, light"]}>Authentische Businessportraits sind entscheidend für den Erfolg Ihres Unternehmens. Ob für Webseite, LinkedIn oder PR – ich schaffe Bilder, die Kompetenz und Persönlichkeit zeigen. In entspannter Atmosphäre entstehen Aufnahmen, die Ihre Individualität und Unternehmenswerte unterstreichen. Zeigen Sie, wer hinter Ihrem Erfolg steht.</p>
+      </div>
+    </div>
+
+    <div class="businessBottom">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V6c0,21.6,291,111.46,741,110.26,445.39,3.6,459-88.3,459-110.26V0Z" class="shape-fill"></path>
+      </svg>
+  </div>
+
   </article>
 
+
   <article class="category-container-3">
-    <h3>Emotionale Bildreportagen</h3>
-    <div class:list={["category-content", "links"]}>
-      <p class="category-text">Die kleinen Momente erzählen oft die größten Geschichten. Mit emotionalen Bildreportagen fange ich echte Emotionen und authentische Augenblicke ein. Jede Bildserie verbindet den Betrachter emotional mit dem Erlebten und lässt die Gefühle des Augenblicks lebendig werden.</p>
-      <Picture class="category-image-3" src={reportage} alt="Restaurator Michael Wintjen in seiner Werkstatt"/>
+
+    <div class="wrapperReportage">
+      <h3>Emotionale Bildreportagen</h3>
+      <div class:list={["category-content", "links"]}>
+        <p class="category-text">Die kleinen Momente erzählen oft die größten Geschichten. Mit emotionalen Bildreportagen fange ich echte Emotionen und authentische Augenblicke ein. Jede Bildserie verbindet den Betrachter emotional mit dem Erlebten und lässt die Gefühle des Augenblicks lebendig werden.</p>
+        <Picture class="category-image-3" src={reportage} alt="Restaurator Michael Wintjen in seiner Werkstatt"/>
+      </div>
     </div>
   </article>
 
@@ -38,24 +66,129 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 
+
+  .categoryTopWave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .categoryTopWave svg {
+      position: relative;
+      display: block;
+      width: calc(123% + 1.3px);
+      height: 75px;
+  }
+
+  .categoryTopWave .shape-fill {
+      fill: #674E8D;
+  }
+
+  .businessTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+  }
+
+  .businessTop svg {
+    position: relative;
+    display: block;
+    width: calc(108% + 1.3px);
+    height: 63px;
+    transform: translateY(1px);
+  }
+
+  .businessTop .shape-fill {
+    fill: #BDD9E5;
+  }
+
+
+  .businessBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    transform: scale();
+  }
+
+  .businessBottom svg {
+    position: relative;
+    display: block;
+    width: calc(121% + 1.3px);
+    height: 63px;
+    transform: rotateY(180deg);
+
+
+  }
+
+  .businessBottom .shape-fill {
+    fill: #BDD9E5;
+  }
+
+
   h3 {
+    font-size: 2rem;
     font-family: "Host Grotesk", sans-serif;
     font-optical-sizing: auto;
     font-weight: <weight>;
     font-style: normal;
     letter-spacing: 2px;
     margin-bottom: var(--space-l);
-    margin-top: var(--space-l);
     text-align: center;
+    line-height: 1;
+  }
+
+  .light{
+    color: var(--clr-font-light)
   }
 
   .category {
     position: relative;
-    max-width: calc(var(--space-m) + 800px);
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .category-container-1 {
+    max-width: calc(var(--space-m) + 800px);
+    padding-top: 20vh;
+    padding-bottom: 20vh;
     margin: 0 auto;
-    padding-bottom: var(--space-xl-2xl);
+  }
+
+  .category-container-2 {
+    position: relative;
+    width: 100%;
+    height: 98%;
+    background-color: var(--clr-bg-dark-full);
+  }
+
+  .category-container-3 {
+    position: relative;
+    width: 100%;
+  }
+
+  .businessportraits {
+    max-width: calc(var(--space-m) + 800px);
+    margin: 0 auto;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+  }
+
+  .wrapperReportage {
+    max-width: calc(var(--space-m) + 800px);
+    margin: 0 auto;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
   }
 
   .category-content {

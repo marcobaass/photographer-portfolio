@@ -11,7 +11,7 @@ const imageMetadata = await Promise.all(
 ---
 
 <section class="portfolio-bg" id="portfolio">
-  <h3>Portfolio</h3>
+  <h3 class="light">Portfolio</h3>
     <div class="portfolioImages" id="portfolioImages">
     <div class="portfolioStream">
       {imageMetadata.map((image, index) => (
@@ -36,28 +36,33 @@ const imageMetadata = await Promise.all(
   @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 
   h3 {
+    font-size: 2rem;
     font-family: "Host Grotesk", sans-serif;
     font-optical-sizing: auto;
     font-weight: <weight>;
     font-style: normal;
     letter-spacing: 2px;
     margin-bottom: var(--space-l);
-    padding-top: var(--space-l);
     text-align: center;
+    line-height: 1;
+  }
+
+  .light{
+    color: var(--clr-font-light)
   }
 
   .portfolio-bg {
-    padding-bottom: var(--space-xl-2xl);
     background-color: var(--clr-bg-dark-full);
+    padding: 10vh 0;
   }
 
   .portfolioStream {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     position: relative;
-    column-count: 5;
-    margin: 0;
-    padding: 0;
+    column-count: 8;
+    margin: 0 auto;
     gap: 0;
-
+    grid-auto-flow: dense;
   }
 
   .image {

@@ -57,15 +57,20 @@ select {
 /* Reset */
 
 :root {
-  --clr-bg: #EAEBE6;
-  --clr-bg-lt: hsl(72, 11%, 94%);
-  --clr-bg-op: rgba(234, 235, 230, 0.8);
-  --clr-bg-dark: rgba(181, 182, 179, 0.616);
-  --clr-bg-dark-full: #b5b6b3;
+  --clr-bg: #bdd9e5;
+  --clr-bg-lt: rgb(189, 217, 229);
+  --clr-bg-op: hsla(198, 44%, 82%, 0.7);
+
+  --clr-bg-dark: #674e8d;
+  --clr-bg-dark-full: #674e8d;
+
+
 
   --clr-bg-dark-test: #929292;
 
-  --clr-font-dark: rgb(20, 20, 20);
+  --clr-font-dark: hsl(264, 29%, 15%);
+  --clr-font-light: hsl(198, 44%, 95%);
+
 
   /* Fontsizes calculated based on utopia.fyi */
   /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
