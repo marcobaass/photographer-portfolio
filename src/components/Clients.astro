@@ -1,4 +1,102 @@
 ---
+import { Image } from 'astro:assets';
+import Logo01 from '../clientLogos/8abfbbfa34b697d39ecf.svg';
+import Logo02 from '../clientLogos/AXA_Logo.svg.png';
+import Logo03 from '../clientLogos/Demeter_RGB.png';
+import Logo04 from '../clientLogos/IMC-Logo_tagline_2022.svg';
+import Logo05 from '../clientLogos/Nobi-Logo.avif';
+import Logo06 from '../clientLogos/Takeda_Pharmaceutical_Company_logo.svg.png';
+import Logo07 from '../clientLogos/Volksbank_Logo.svg.png';
+import Logo08 from '../clientLogos/aaz8ridgu.webp';
+import Logo09 from '../clientLogos/arg-logo.svg';
+import Logo10 from '../clientLogos/logo-das-frischeinstitut.png';
+import Logo11 from '../clientLogos/logo-sporty.png';
+import Logo12 from '../clientLogos/logo.png';
 
 ---
-LOGOS LOGOS LOGOS
+<section>
+  <div class="scroller">
+    <div class="scroller__inner">
+      <Image class="img" src={Logo01} alt="" loading="eager"/>
+      <Image class="img" src={Logo02} alt="" loading="eager"/>
+      <Image class="img" src={Logo03} alt="" loading="eager"/>
+      <Image class="img" src={Logo04} alt="" loading="eager"/>
+      <Image class="img" src={Logo05} alt="" loading="eager"/>
+      <Image class="img" src={Logo06} alt="" loading="eager"/>
+      <Image class="img" src={Logo07} alt="" loading="eager"/>
+      <Image class="img" src={Logo08} alt="" loading="eager"/>
+      <Image class="img" src={Logo09} alt="" loading="eager"/>
+      <Image class="img" src={Logo10} alt="" loading="eager"/>
+      <Image class="img" src={Logo11} alt="" loading="eager"/>
+      <Image class="img" src={Logo12} alt="" loading="eager"/>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: var(--clr-bg-dark-full);
+  }
+
+  .scroller {
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+
+  .scroller__inner {
+    padding-block: var(--space-l);
+    display: flex;
+    gap: 5rem;
+    flex-wrap: wrap;
+  }
+
+  .scroller[data-animated="true"] {
+    overflow: hidden;
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%,transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%,transparent);
+  }
+
+  .scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll 40s linear infinite;
+  }
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 2.5rem));
+    }
+  }
+
+  .img {
+    height: 50px;
+    width: auto;
+  }
+</style>
+
+<script>
+  const scrollers = document.querySelectorAll('.scroller');
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addAnimation();
+  }
+
+  function addAnimation() {
+    scrollers.forEach(scroller => {
+      scroller.setAttribute('data-animated', 'true');
+
+      const scrollerInner = scroller.querySelector('.scroller__inner');
+      const scrollerContent = Array.from(scrollerInner.children);
+
+      scrollerContent.forEach(item => {
+        const duplicatedItem = item.cloneNode(true);
+
+        if (duplicatedItem instanceof Element) {
+          duplicatedItem.setAttribute('aria-hidden', 'true');
+          scrollerInner.appendChild(duplicatedItem);
+        }
+      })
+    })
+  }
+
+</script>

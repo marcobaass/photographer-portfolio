@@ -11,16 +11,29 @@ const imageMetadata = await Promise.all(
 ---
 
 <section class="portfolio-bg" id="portfolio">
-  <h3 class="light">Portfolio</h3>
-    <div class="portfolioImages" id="portfolioImages">
-    <div class="portfolioStream">
-      {imageMetadata.map((image, index) => (
-        <div class="portfolioSlide">
-          <Image class="image" src={image.default} alt={`Gallery Image ${index + 1}`} />
-        </div>
-      ))}
-    </div>
+
+  <div class="portfolioTop">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+    </svg>
   </div>
+
+  <h3 class="light">Portfolio</h3>
+
+  <div class="portfolioStream">
+    {imageMetadata.map((image, index) => (
+      <div class="portfolioSlide">
+        <Image class="image" src={image.default} alt={`Gallery Image ${index + 1}`} />
+      </div>
+    ))}
+  </div>
+
+  <div class="portfolioBottom">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+    </svg>
+  </div>
+
 </section>
 
 <div id="modal" class="modal">
@@ -34,6 +47,49 @@ const imageMetadata = await Promise.all(
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+
+  .portfolioTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+  }
+
+  .portfolioTop svg {
+    position: relative;
+    display: block;
+    width: calc(152% + 1.3px);
+    height: 20px;
+  }
+
+  .portfolioTop .shape-fill {
+    fill: #BDD9E5;
+  }
+
+  .portfolioBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .portfolioBottom svg {
+    position: relative;
+    display: block;
+    width: calc(152% + 1.3px);
+    height: 20px;
+    transform: translateY(1px);
+  }
+
+  .portfolioBottom .shape-fill {
+    fill: #BDD9E5;
+  }
+
 
   h3 {
     font-size: 2rem;
@@ -57,10 +113,8 @@ const imageMetadata = await Promise.all(
   }
 
   .portfolioStream {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     position: relative;
-    column-count: 8;
-    margin: 0 auto;
+    column-count: 7;
     gap: 0;
     grid-auto-flow: dense;
   }
@@ -68,10 +122,12 @@ const imageMetadata = await Promise.all(
   .image {
     padding: 0.5rem 0.5rem;
     border-radius: 16px;
+    transition: 250ms;
   }
 
   .image:hover {
     cursor: zoom-in;
+    scale: 1.1;
   }
 
   .modal {
@@ -141,6 +197,11 @@ const imageMetadata = await Promise.all(
 </style>
 
 <script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+
   const images = document.querySelectorAll('.image');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg') as HTMLImageElement;
@@ -198,5 +259,22 @@ const imageMetadata = await Promise.all(
       document.body.style.overflow = '';
     }
   })
+
+
+
+  gsap.from(".portfolio-bg", {
+    scrollTrigger: {
+    trigger: ".portfolio-bg",
+    start: "top 80%",
+    },
+    stagger: {
+      each: 0.5,
+    },
+    duration: 3,
+    opacity: 0,
+    y: "5rem",
+    ease: "power4.out",
+
+  });
 
 </script>
