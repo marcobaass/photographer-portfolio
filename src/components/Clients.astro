@@ -15,6 +15,14 @@ import Logo12 from '../clientLogos/logo.png';
 
 ---
 <section>
+
+  <!-- <div class="clientTop">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+      </svg>
+  </div> -->
+
+  <h2 class="light">Referenzen</h2>
   <div class="scroller">
     <div class="scroller__inner">
       <Image class="img" src={Logo01} alt="" loading="eager"/>
@@ -31,12 +39,68 @@ import Logo12 from '../clientLogos/logo.png';
       <Image class="img" src={Logo12} alt="" loading="eager"/>
     </div>
   </div>
+
+  <!-- <div class="clientBottom">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+    </svg>
+  </div> -->
 </section>
 
 <style>
-  section {
+
+ section {
     background-color: var(--clr-bg-dark-full);
+    padding: var(--space-l) 0;
+    position: relative;
   }
+
+  .clientTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+  }
+
+  .clientTop svg {
+    position: relative;
+    display: block;
+    width: calc(152% + 1.3px);
+    height: 20px;
+  }
+
+  .clientTop .shape-fill {
+    fill: #BDD9E5;
+  }
+
+  .clientBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .clientBottom svg {
+    position: relative;
+    display: block;
+    width: calc(152% + 1.3px);
+    height: 20px;
+    transform: translateY(1px);
+  }
+
+  .clientBottom .shape-fill {
+    fill: #BDD9E5;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
 
   .scroller {
     max-width: 100vw;

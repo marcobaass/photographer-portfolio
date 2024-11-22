@@ -5,56 +5,76 @@
   box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balanced;
-  margin: 0;
-  padding: 0;
+/* Font-Face Definitionen */
+@font-face {
+  font-family: "Lato-Black";
+  src: url("../assets/fonts/Lato-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
 }
 
-p,
-li,
-figcaption {
-  text-wrap: pretty;
-  max-width: 65ch;
-  margin: 0;
+@font-face {
+  font-family: "Lato-BlackItalic";
+  src: url("../assets/fonts/Lato-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
 }
 
-html {
-  scroll-behavior: smooth;
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("../assets/fonts/Lato-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
 
-html, body{
-  display:block;
-  width: 100%;
-  height: 100%;
-  position:relative;
- }
-
-body {
-  text-rendering: optimizeSpeed;
-  line-height: 1.6;
-  margin: 0 auto;
+@font-face {
+  font-family: "Lato-BoldItalic";
+  src: url("../assets/fonts/Lato-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
 }
 
-img,
-picture {
-  max-width: 100%;
-  display: block;
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("../assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
+@font-face {
+  font-family: "Lato-RegularItalic";
+  src: url("../assets/fonts/Lato-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
 }
-/* Reset */
+
+@font-face {
+  font-family: "Lato-Light";
+  src: url("../assets/fonts/Lato-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato-LightItalic";
+  src: url("../assets/fonts/Lato-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Lato-Thin";
+  src: url("../assets/fonts/Lato-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato-ThinItalic";
+  src: url("../assets/fonts/Lato-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
 
 :root {
   --clr-bg: #bdd9e5;
@@ -106,38 +126,103 @@ select {
 
   /* Custom pairs */
   --space-s-l: clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem);
+
+  --font-lato-black: "Lato-Black", sans-serif;
+  --font-lato-black-italic: "Lato-BlackItalic", sans-serif;
+  --font-lato-bold: "Lato-Bold", sans-serif;
+  --font-lato-bold-italic: "Lato-BoldItalic", sans-serif;
+  --font-lato-regular: "Lato-Regular", sans-serif;
+  --font-lato-regular-italic: "Lato-RegularItalic", sans-serif;
+  --font-lato-light: "Lato-Light", sans-serif;
+  --font-lato-light-italic: "Lato-LightItalic", sans-serif;
+  --font-lato-thin: "Lato-Thin", sans-serif;
+  --font-lato-thin-italic: "Lato-ThinItalic", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balanced;
+  margin: 0;
+  padding: 0;
+}
+
+.light{
+  color: var(--clr-font-light)
+}
+
+.dark{
+  color: var(--clr-font-dark)
 }
 
 h1 {
   font-size: var(--step-4);
-  color: var(--clr-font-dark);
+  font-family: var(--font-lato-bold);
+  letter-spacing: 2px;
+  margin-bottom: var(--space-l);
+  text-align: center;
+  line-height: 1;
+  color: var(--clr-font-light)
 }
 
 h2 {
-  font-size: var(--step-0);
-  color: var(--clr-font-dark);
-}
-
-h3 {
-  font-size: var(--step-0);
-  color: var(--clr-font-dark);
-}
-
-h4 {
-  font-size: var(--step-0);
-  color: var(--clr-font-dark);
-}
-
-h5 {
-  font-size: var(--step-0);
-  color: var(--clr-font-dark);
+  font-size: var(--step-2);
+  font-family: var(--font-lato-regular);
+  letter-spacing: 2px;
+  margin-bottom: var(--space-l);
+  text-align: center;
+  line-height: 1;
 }
 
 p {
-  font-size: var(--step-0);
-  color: var(--clr-font-dark);
+  font-family: var(--font-lato-regular);
   font-size: var(--step--1);
 }
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+  max-width: 65ch;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body{
+  display:block;
+  width: 100%;
+  height: 100%;
+  position:relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ }
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Reset */
 
 body{
   background-color: var(--clr-bg);
