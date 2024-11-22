@@ -77,12 +77,12 @@
 }
 
 :root {
-  --clr-bg: #bdd9e5;
+  --clr-bg: #b7d2dd;
   --clr-bg-lt: rgb(189, 217, 229);
   --clr-bg-op: hsla(198, 44%, 82%, 0.7);
 
   --clr-bg-dark: #674e8d;
-  --clr-bg-dark-full: #674e8d;
+  --clr-bg-dark-full: #432077;
 
 
 
@@ -160,7 +160,7 @@ h6 {
 
 h1 {
   font-size: var(--step-4);
-  font-family: var(--font-lato-bold);
+  font-family: var(--font-lato-light);
   letter-spacing: 2px;
   margin-bottom: var(--space-l);
   text-align: center;
