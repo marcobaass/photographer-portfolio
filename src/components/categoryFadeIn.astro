@@ -15,11 +15,11 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 
   <article class="category-container-1">
     <div class="wrapperEvent">
-      <h2>Eventfotografie</h2>
       <div class:list={["category-content", "links"]}>
-        <p class:list="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
-        <Picture class="category-image-1" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
+        <h2>Eventfotografie</h2>
+        <p class="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
       </div>
+      <Picture class="category-image-1" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
     </div>
   </article>
 
@@ -185,13 +185,26 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 
   .category-text {
     place-content: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.5),
+                -20px -20px 20px rgba(255, 255, 255, 0.5),
+                20px -20px 20px rgba(255, 255, 255, 0.5),
+                -20px 20px 20px rgba(255, 255, 255, 0.5);
   }
 
-  .category-image-1,
   .category-image-2,
   .category-image-3 {
     width: 100%;
     border-radius: 16px;
+  }
+
+  .category-image-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -10;
+    min-width: 100vw;
   }
 
   @media only screen and (max-width: 720px) {
@@ -254,8 +267,8 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
   gsap.from(".category-image-1", {
     scrollTrigger: {
       trigger: ".category-image-1",
-        start:"-100 75%",      //100px über element & mitte des viewports
-        end:"300 75%",         //100px unter element & mitte des viewports
+        start:"-100",      //100px über element & mitte des viewports
+        end:"300",         //100px unter element & mitte des viewports
         id: "left-text",
         markers: false,
         scrub: 2,

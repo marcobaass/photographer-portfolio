@@ -3,13 +3,11 @@
 ---
 <section class="contact-form-section">
   <h2>Kontaktformular</h2>
-  <form class="contact-form" action="mailto:picture@marcobaass.com" method="POST" enctype="text/plain">
+  <form class="contact-form" action="https://formsubmit.co/picture@marcobaass.com" method="POST">
     <label for="email">E-Mail-Adresse</label>
     <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
-
     <label for="message">Nachricht</label>
-    <textarea id="message" name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
-
+    <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
     <button type="submit">Absenden</button>
   </form>
 </section>
@@ -62,15 +60,3 @@
     background-color: #0056b3;
   }
 </style>
-
-<script>
-  document.querySelector('.contact-form').addEventListener('submit', function (event) {
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-
-  if (!email || !message) {
-      alert('Bitte füllen Sie alle Felder aus.');
-      event.preventDefault();
-    }
-  });
-</script>
