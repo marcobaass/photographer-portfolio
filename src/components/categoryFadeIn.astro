@@ -3,44 +3,23 @@ import gsap from "gsap";
 import { Picture } from "astro:assets";
 import event from '../categoryImages/ITB-messe-fotografie.jpg';
 import portrait from '../categoryImages/mitarbeiterkampagne-takeda-berlin.jpg';
-import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
+import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg';
 ---
 <section class="category" id="leistung">
 
-  <div class="categoryTopWave">
+  <div class="topDivider">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
+      <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
     </svg>
   </div>
 
-  <article class="category-container-1">
-    <div class="wrapperEvent">
-      <div class:list={["category-content", "links"]}>
-        <h2>Eventfotografie</h2>
-        <p class="category-text">Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
-      </div>
-      <Picture class="category-image-1" src={event} alt="Handshake Foto von der Internationalen Tourismusbörse Berlin"/>
-    </div>
-  </article>
-
-
-  <article class="category-container-2">
-
-    <div class="businessTop">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
-      </svg>
+  <article class="event-container">
+    <div class="event-content">
+      <h2>Eventfotografie</h2>
+      <p>Ob Firmenfeier, Messe oder Konferenz – ich halte die besonderen Momente fest, die Ihr Event unvergesslich machen. Ich fange Emotionen und Details ein, die Ihre Gäste und Marke ins beste Licht rücken. Nutzen Sie hochwertige Eventfotos für Marketing, Website oder Social Media, um die Geschichte Ihrer Veranstaltung zu erzählen.</p>
     </div>
 
-    <div class="businessportraits">
-      <h2 class="light">Businessportraits</h2>
-      <div class:list={["category-content", "rechts"]}>
-        <Picture class="category-image-2" src={portrait} alt="Mitarbeiter Porträt mit Kollegen im Hintergrund"/>
-        <p class:list={["category-text, light"]}>Authentische Businessportraits sind entscheidend für den Erfolg Ihres Unternehmens. Ob für Webseite, LinkedIn oder PR – ich schaffe Bilder, die Kompetenz und Persönlichkeit zeigen. In entspannter Atmosphäre entstehen Aufnahmen, die Ihre Individualität und Unternehmenswerte unterstreichen. Zeigen Sie, wer hinter Ihrem Erfolg steht.</p>
-      </div>
-    </div>
-
-    <div class="businessBottom">
+    <div class="bottomDivider">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
       </svg>
@@ -49,14 +28,55 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
   </article>
 
 
-  <article class="category-container-3">
 
-    <div class="wrapperReportage">
+
+
+
+
+
+  <article class="business-container">
+    <div class="topDivider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+    <div class="business-content">
+      <h2>Businessportraits</h2>
+      <p>Authentische Businessportraits sind entscheidend für den Erfolg Ihres Unternehmens. Ob für Webseite, LinkedIn oder PR – ich schaffe Bilder, die Kompetenz und Persönlichkeit zeigen. In entspannter Atmosphäre entstehen Aufnahmen, die Ihre Individualität und Unternehmenswerte unterstreichen. Zeigen Sie, wer hinter Ihrem Erfolg steht.</p>
+    </div>
+
+    <div class="bottomDivider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+  </article>
+
+
+
+
+
+
+
+  <article class="reportage-container">
+
+    <div class="topDivider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+    <div class="reportage-content">
       <h2>Emotionale Bildreportagen</h2>
-      <div class:list={["category-content", "links"]}>
-        <p class="category-text">Die kleinen Momente erzählen oft die größten Geschichten. Mit emotionalen Bildreportagen fange ich echte Emotionen und authentische Augenblicke ein. Jede Bildserie verbindet den Betrachter emotional mit dem Erlebten und lässt die Gefühle des Augenblicks lebendig werden.</p>
-        <Picture class="category-image-3" src={reportage} alt="Restaurator Michael Wintjen in seiner Werkstatt"/>
-      </div>
+      <p>Die kleinen Momente erzählen oft die größten Geschichten. Mit emotionalen Bildreportagen fange ich echte Emotionen und authentische Augenblicke ein. Jede Bildserie verbindet den Betrachter emotional mit dem Erlebten und lässt die Gefühle des Augenblicks lebendig werden.</p>
+    </div>
+
+    <div class="bottomDivider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+      </svg>
     </div>
   </article>
 
@@ -67,27 +87,9 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
   @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 
 
-  .categoryTopWave {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-  }
+  /* Trenner */
 
-  .categoryTopWave svg {
-    position: relative;
-    display: block;
-    width: calc(152% + 1.3px);
-    height: 20px;
-  }
-
-  .categoryTopWave .shape-fill {
-      fill: #432077;
-  }
-
-  .businessTop {
+  .topDivider {
     position: absolute;
     top: 0;
     left: 0;
@@ -95,21 +97,21 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);
+    z-index: 1;
   }
 
-  .businessTop svg {
+  .topDivider svg {
     position: relative;
     display: block;
     width: calc(152% + 1.3px);
     height: 20px;
   }
 
-  .businessTop .shape-fill {
-    fill: #BDD9E5;
+  .topDivider .shape-fill {
+      fill: #432077;
   }
 
-
-  .businessBottom {
+  .bottomDivider {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -118,7 +120,7 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     line-height: 0;
   }
 
-  .businessBottom svg {
+  .bottomDivider svg {
     position: relative;
     display: block;
     width: calc(152% + 1.3px);
@@ -126,96 +128,75 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
     transform: translateY(1px);
   }
 
-  .businessBottom .shape-fill {
-    fill: #BDD9E5;
+  .bottomDivider .shape-fill {
+    fill: #432077;
   }
+
+
+
+  /* Kategorien Styling */
 
   .category {
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    background-color: #432077;
   }
 
-  .category-container-1 {
-    max-width: calc(var(--space-m) + 800px);
-    padding-top: 20vh;
-    padding-bottom: 20vh;
-    margin: 0 auto;
-  }
-
-  .category-container-2 {
+  .eventfotografie {
     position: relative;
-    width: 100%;
-    height: 98%;
-    background-color: var(--clr-bg-dark-full);
   }
 
-  .category-container-3 {
-    position: relative;
-    width: 100%;
+  .event-container {
+    width: 100vw;
+    background-image: url('/src/categoryImages/ITB-messe-fotografie.jpg');
+    background-size: cover;
+    margin-bottom: var(--space-xl);
   }
 
-  .businessportraits {
-    max-width: calc(var(--space-m) + 800px);
-    margin: 0 auto;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
-  }
-
-  .wrapperReportage {
-    max-width: calc(var(--space-m) + 800px);
-    margin: 0 auto;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
-  }
-
-  .category-content {
-    display: grid;
-    gap: var(--space-2xl);
-    margin: 0 var(--space-m);
-  }
-
-  .links {
-    grid-template-columns: 45fr 65fr;
-  }
-
-  .rechts {
-    grid-template-columns: 65fr 45fr;
-  }
-
-  .category-text {
-    place-content: center;
-    background-color: rgba(255, 255, 255, 0.75);
-    box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.5),
-                -20px -20px 20px rgba(255, 255, 255, 0.5),
-                20px -20px 20px rgba(255, 255, 255, 0.5),
-                -20px 20px 20px rgba(255, 255, 255, 0.5);
-  }
-
-  .category-image-2,
-  .category-image-3 {
-    width: 100%;
+  .event-content {
+    max-width: 55ch;
+    text-align: left;
+    background-color: rgba(189, 217, 229, 0.75);
+    padding: var(--space-s);
     border-radius: 16px;
+    margin: var(--space-3xl) 0 var(--space-3xl) var(--space-2xl);
   }
 
-  .category-image-1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -10;
-    min-width: 100vw;
+  h2 {
+    text-align: left;
   }
 
-  @media only screen and (max-width: 720px) {
-    .links {
-      grid-template-columns: 1fr;
-    }
-    .rechts {
-      grid-template-columns: 1fr;
-    }
+  .business-container {
+    width: 100vw;
+    background-image: url('/src/categoryImages/mitarbeiterkampagne-takeda-berlin.jpg');
+    background-size: cover;
+    margin-bottom: var(--space-xl);
   }
 
+  .business-content {
+    max-width: 55ch;
+    text-align: right;
+    background-color: rgba(189, 217, 229, 0.75);
+    padding: var(--space-s);
+    border-radius: 16px;
+    margin: var(--space-3xl) 0 var(--space-3xl) var(--space-2xl);
+  }
+
+  .reportage-container {
+    width: 100vw;
+    background-image: url('/src/categoryImages/reportage-foto-michael-wintjen.jpg');
+    background-size: cover;
+  }
+
+  .reportage-content {
+    max-width: 55ch;
+    text-align: right;
+    background-color: rgba(189, 217, 229, 0.75);
+    padding: var(--space-s);
+    border-radius: 16px;
+    margin: var(--space-3xl) 0 var(--space-3xl) var(--space-2xl);
+  }
 </style>
 
 
@@ -225,9 +206,11 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
   import ScrollTrigger from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from(".category-container-1", {
+  // fade ins
+
+  gsap.from(".event-container", {
     scrollTrigger: {
-    trigger: ".category-container-1",
+    trigger: ".event-container",
     start: "top 80%",
     },
     stagger: {
@@ -240,9 +223,9 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 
   });
 
-  gsap.from(".category-container-2", {
+  gsap.from(".business-container", {
     scrollTrigger: {
-    trigger: ".category-container-2",
+    trigger: ".business-container",
     start: "top 80%",
     },
     duration: 3,
@@ -252,9 +235,9 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 
   });
 
-  gsap.from(".category-container-3", {
+  gsap.from(".reportage-container", {
     scrollTrigger: {
-    trigger: ".category-container-3",
+    trigger: ".reportage-container",
     start: "top 80%",
     },
     duration: 3,
@@ -264,40 +247,39 @@ import reportage from '../categoryImages/reportage-foto-michael-wintjen.jpg'
 
   });
 
-  gsap.from(".category-image-1", {
-    scrollTrigger: {
-      trigger: ".category-image-1",
-        start:"-100",      //100px über element & mitte des viewports
-        end:"300",         //100px unter element & mitte des viewports
-        id: "left-text",
-        markers: false,
-        scrub: 2,
-    },
-    scale: .75,
-  })
+  // text box scrolling animation
 
-  gsap.from(".category-image-2", {
+  gsap.from(".event-content", {
     scrollTrigger: {
-      trigger: ".category-image-2",
-        start:"-100 75%",      //100px über element & mitte des viewports
-        end:"300 75%",         //100px unter element & mitte des viewports
-        id: "left-text",
-        markers: false,
-        scrub: 2,
+      trigger: ".event-container",
+      start: "-50 500",
+      end: "400 500",
+      markers: true,
+      scrub: 2,
     },
-    scale: .75,
-  })
+    y: "200%"
+  });
 
-  gsap.from(".category-image-3", {
+  gsap.from(".business-content", {
     scrollTrigger: {
-      trigger: ".category-image-3",
-        start:"-100 75%",      //100px über element & mitte des viewports
-        end:"300 75%",         //100px unter element & mitte des viewports
-        id: "left-text",
-        markers: false,
-        scrub: 2,
+      trigger: ".business-container",
+      start: "-50 500",
+      end: "400 500",
+      markers: true,
+      scrub: 2,
     },
-    scale: .75,
-  })
+    y: "200%"
+  });
+
+  gsap.from(".reportage-content", {
+    scrollTrigger: {
+      trigger: ".reportage-container",
+      start: "-50 500",
+      end: "400 500",
+      markers: true,
+      scrub: 2,
+    },
+    y: "200%"
+  });
 
 </script>

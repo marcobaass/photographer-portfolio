@@ -207,6 +207,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.6;
   margin: 0 auto;
+  background-color: var(--clr-bg-dark-full);
 }
 
 img,
@@ -223,7 +224,3 @@ select {
   font: inherit;
 }
 /* Reset */
-
-body{
-  background-color: var(--clr-bg);
-}

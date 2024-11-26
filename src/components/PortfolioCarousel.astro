@@ -12,12 +12,6 @@ const imageMetadata = await Promise.all(
 
 <section class="portfolio-bg" id="portfolio">
 
-  <div class="portfolioTop">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
-    </svg>
-  </div>
-
   <h2 class="light">Portfolio</h2>
 
   <div class="portfolioStream">
@@ -26,12 +20,6 @@ const imageMetadata = await Promise.all(
         <Image class="image" src={image.default} alt={`Gallery Image ${index + 1}`} />
       </div>
     ))}
-  </div>
-
-  <div class="portfolioBottom">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
-    </svg>
   </div>
 
 </section>
@@ -47,48 +35,6 @@ const imageMetadata = await Promise.all(
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
-
-  .portfolioTop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-  }
-
-  .portfolioTop svg {
-    position: relative;
-    display: block;
-    width: calc(152% + 1.3px);
-    height: 20px;
-  }
-
-  .portfolioTop .shape-fill {
-    fill: #BDD9E5;
-  }
-
-  .portfolioBottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-  }
-
-  .portfolioBottom svg {
-    position: relative;
-    display: block;
-    width: calc(152% + 1.3px);
-    height: 20px;
-    transform: translateY(1px);
-  }
-
-  .portfolioBottom .shape-fill {
-    fill: #BDD9E5;
-  }
 
   .light{
     color: var(--clr-font-light)
