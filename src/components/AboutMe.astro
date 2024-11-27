@@ -2,8 +2,8 @@
 import { Image } from 'astro:assets';
 import me from '../aboutMeImage/marco_baass.jpg'
 ---
-<article>
-  <div id="aboutMe">
+<article id="about">
+  <div class="aboutMe">
     <Image src={ me } alt="" class='img' />
     <h2 class="dark">Über mich</h2>
     <p class="dark">
@@ -22,7 +22,7 @@ import me from '../aboutMeImage/marco_baass.jpg'
     padding: var(--space-xl) 0;
   }
 
-  #aboutMe {
+  .aboutMe {
     margin: var(--space-l) auto;
     text-wrap: pretty;
     max-width: 75ch;

@@ -1,7 +1,7 @@
 ---
 
 ---
-<section class="contact-form-section">
+<section class="contact-form-section" id="contact">
   <h2>Kontaktformular</h2>
   <form class="contact-form" action="https://formsubmit.co/picture@marcobaass.com" method="POST">
     <label for="email">E-Mail-Adresse</label>
@@ -14,16 +14,17 @@
 
 <style>
   .contact-form-section {
-    max-width: 600px;
-    margin: 0 auto;
     padding: 2rem;
     font-family: Arial, sans-serif;
+    background-color: var(--clr-bg-lt);
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .contact-form label {
