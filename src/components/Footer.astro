@@ -7,36 +7,59 @@ import { Icon } from 'astro-icon/components'
 ---
 <footer>
 
-  <h3 class="light">Marco Baaß Fotografie</h3>
-  <p class="light">Pasteurstraße 53</p>
-  <p class="light">10407 Berlin</p>
-
-
-
-  <button class="light"><p>Impressum</p></button>
-  <button class="light"><p>Datenschutz</p></button>
-
-  <div class="contact light">
-
-    <a href="https://www.linkedin.com/in/marcobaass/" target="_blank"><Icon name="mdi:linkedin" /></i></a>
-    <a href="mailto: picture@marcobaass.com"><Icon name="mdi:email" /></i></a>
-    <a href="mailto: picture@marcobaass.com"><Icon name="mdi:phone" /></i></a><p>0151 193 45 758</p>
-
+  <div class="footerContent">
+    <h3 class="light">Marco Baaß Fotografie</h3>
+    <p class="light">Pasteurstraße 53</p>
+    <p class="light">10407 Berlin</p>
+    <div class="contact light">
+      <div id="phone">
+        <Icon name="mdi:phone" /><p>0151 193 45 758</p>
+      </div>
+      <div class="icons">
+        <a href="https://www.linkedin.com/in/marcobaass/" target="_blank"><Icon name="mdi:linkedin" /></i></a>
+        <a href="mailto: picture@marcobaass.com"><Icon name="mdi:email" /></a>
+      </div>
+    </div>
+    <div class="dsvgo">
+      <button class="light"><p>Impressum</p></button>
+      <button class="light"><p>Datenschutz</p></button>
+    </div>
   </div>
 
 </footer>
 
 
 
-<style lang="css">
-  [data-icon] {
-      font-size: var(--step-2);
+<style>
+  .footerContent {
+    margin: var(--space-l);
   }
 
-  /* styling a specific icon
-    [data-icon="icon-name"] {
-      color: red;
-      /* OR */
-      fill: red;
-  /* }  */
+  .icons {
+    display: flex;
+    gap: var(--space-2xs);
+  }
+
+  #phone {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xs)
+  }
+
+  .dsvgo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: var(--space-s);
+  }
+
+  [data-icon] {
+    font-size: var(--step-2);
+  }
+
+
+  [data-icon="mdi:phone"] {
+    font-size: var(--step-0);
+    text-align: center;
+  }
 </style>
