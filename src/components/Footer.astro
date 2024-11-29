@@ -1,3 +1,42 @@
 ---
-
+// npx astro add astro-icon >>> installing astro-icon
+import { Icon } from 'astro-icon/components'
+// npm i -D @iconify-json/mdi >>> install icon package from iconify (e.g. Material Design Icon in this case)
+// https://github.com/natemoo-re/astro-icon?tab=readme-ov-file
+// https://icon-sets.iconify.design/mdi/
 ---
+<footer>
+
+  <h3 class="light">Marco Baaß Fotografie</h3>
+  <p class="light">Pasteurstraße 53</p>
+  <p class="light">10407 Berlin</p>
+
+
+
+  <button class="light"><p>Impressum</p></button>
+  <button class="light"><p>Datenschutz</p></button>
+
+  <div class="contact light">
+
+    <a href="https://www.linkedin.com/in/marcobaass/" target="_blank"><Icon name="mdi:linkedin" /></i></a>
+    <a href="mailto: picture@marcobaass.com"><Icon name="mdi:email" /></i></a>
+    <a href="mailto: picture@marcobaass.com"><Icon name="mdi:phone" /></i></a><p>0151 193 45 758</p>
+
+  </div>
+
+</footer>
+
+
+
+<style lang="css">
+  [data-icon] {
+      font-size: var(--step-2);
+  }
+
+  /* styling a specific icon
+    [data-icon="icon-name"] {
+      color: red;
+      /* OR */
+      fill: red;
+  /* }  */
+</style>

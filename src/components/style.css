@@ -177,6 +177,12 @@ h2 {
   line-height: 1;
 }
 
+h3 {
+  font-size: var(--step-0);
+  font-family: var(--font-lato-regular);
+  line-height: 1;
+}
+
 p {
   font-family: var(--font-lato-regular);
   font-size: var(--step--1);
