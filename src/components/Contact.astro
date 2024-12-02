@@ -3,12 +3,20 @@
 ---
 <section class="contact-form-section" id="contact">
   <h2>Kontaktformular</h2>
-  <form class="contact-form" action="https://formsubmit.co/picture@marcobaass.com" method="POST">
+  <form class="contact-form" method="POST" id="form">
+    <input type="hidden" name="access_key" value="805942c8-e634-4e6c-9c1b-0e45bb6d7512" />
+
+    <label for="email">Ihr Name</label>
+    <input type="text" name="name" placeholder="Name" required>
+
     <label for="email">E-Mail-Adresse</label>
     <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+
     <label for="message">Nachricht</label>
     <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
     <button type="submit">Absenden</button>
+
+    <div id="result"></div>
   </form>
 </section>
 
@@ -61,3 +69,46 @@
     background-color: #0056b3;
   }
 </style>
+
+<script is:inline>
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
+
+  form.addEventListener('submit', function(e) {
+      const formData = new FormData(form);
+      e.preventDefault();
+
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      result.innerHTML = "Please wait..."
+
+      fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: json
+          })
+          .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                  result.innerHTML = json.message;
+              } else {
+                  console.log(response);
+                  result.innerHTML = json.message;
+              }
+          })
+          .catch(error => {
+              console.log(error);
+              result.innerHTML = "Something went wrong!";
+          })
+          .then(function() {
+              form.reset();
+              setTimeout(() => {
+                  result.style.display = "none";
+              }, 3000);
+          });
+  });
+  </script>
