@@ -21,13 +21,13 @@ import 'swiper/css/pagination';
   <div class="swiper-wrapper">
     <!-- Slides -->
     <div class="swiper-slide">
-      <Image src={slide1} alt="Slider Image 1"/>
+      <Image src={slide1} alt="Aufnahme einer Videokamera die gerade ein Interview mit einer Person filmt"/>
     </div>
     <div class="swiper-slide">
-      <Image src={slide2} alt="Slider Image 2"/>
+      <Image src={slide2} alt="Ein Ingenieur der gerade ein Messgerät in einem Auto anschliesst"/>
     </div>
     <div class="swiper-slide">
-      <Image src={slide3} alt="Slider Image 3"/>
+      <Image src={slide3} alt="Portrait von Manu Kumar in seiner Teemanufaktur"/>
     </div>
   </div>
   <!-- If we need pagination -->
@@ -98,10 +98,12 @@ import 'swiper/css/pagination';
     object-fit: cover;
   }
 
-  /* .swiper-button-next, .swiper-button-prev {
-    color: black;
-    font-weight: 900;
-  } */
+  @media only screen and (max-width: 430px) {
+    .swiper {
+      width: 100%;
+      height: 70%;
+    }
+  }
 </style>
 
 <script>

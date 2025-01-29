@@ -1,32 +1,26 @@
 ---
-import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/*.{jpeg,jpg,png,gif}', { eager: true });
-
-// Erstelle die Thumbnails mit `await getImage`
-  const thumbnails = await Promise.all(Object.values(images).map(async (image) => ({
-    thumb: (await getImage({ src: image.default, width: 300, format: 'webp' })).src,
-    fullsize: (await getImage({ src: image.default, width: 1000, format: 'webp' })).src
-  })));
+// Import all images and load their metadata asynchronously
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/*.{jpeg,jpg,png,gif}');
+const imageMetadata = await Promise.all(
+  Object.values(images).map(async (imageImport) => await imageImport())
+);
 ---
 
 <section class="portfolio-bg" id="portfolio">
+
   <h2 class="light">Portfolio</h2>
+
   <div class="portfolioStream">
-    {thumbnails.length > 0 && thumbnails.map((image, index) => (
-      <div class="portfolioSlide" key={index}>
-        <img
-          class="image"
-          src={image.thumb}
-          width="300"
-          height="200"
-          alt={`Gallery Image ${index + 1}`}
-          data-index={index}
-          data-fullsize={image.fullsize}
-        />
+    {imageMetadata.map((image, index) => (
+      <div class="portfolioSlide">
+        <Image class="image" src={image.default} alt={`Gallery Image ${index + 1}`} />
       </div>
     ))}
   </div>
+
 </section>
 
 <div id="modal" class="modal">
@@ -162,23 +156,21 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
   const prev = document.getElementById('prev');
   let currentIndex = 0;
 
-  const thumbnails = Array.from(document.querySelectorAll('.image'));
 
-  thumbnails.forEach((img, index) => {
+  images.forEach((img, index) => {
     img.addEventListener('click', (e) => {
       e.preventDefault();
+      const target = e.target as HTMLImageElement;
 
-      const fullsizeUrl = img.getAttribute('data-fullsize'); // Hier den Pfad holen
+      modalImg.src = target.src;
 
-      console.log("Loading fullsize image:", fullsizeUrl);
-
-      modalImg.src = fullsizeUrl; // Das Bild setzen
       currentIndex = index;
 
       modal.style.display = 'flex';
+
       document.body.style.overflow = 'hidden';
-    });
-  });
+    })
+  })
 
   close.addEventListener('click', (e) => {
     modal.style.display = 'none';
@@ -186,17 +178,25 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
     document.body.style.overflow = '';
   })
 
-  next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % thumbnails.length;
-    const nextImage = thumbnails[currentIndex];
-    modalImg.src = nextImage.getAttribute('data-fullsize');
-  });
+  next.addEventListener('click', (e) => {
+    currentIndex++;
+    if (currentIndex >= (images.length - 1)) {
+      currentIndex = 0;
+    }
+    const nextImage = images[currentIndex];
+    const modalImg = document.getElementById('modalImg');
+    modalImg.src = nextImage.src;
+  })
 
-  prev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
-    const prevImage = thumbnails[currentIndex];
-    modalImg.src = prevImage.getAttribute('data-fullsize');
-  });
+  prev.addEventListener('click', (e) => {
+    currentIndex--;
+    if (currentIndex <= 0) {
+      currentIndex = images.length - 1;
+    }
+    const prevImage = images[currentIndex];
+    const modalImg = document.getElementById('modalImg');
+    modalImg.src = prevImage.src;
+  })
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {

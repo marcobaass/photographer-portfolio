@@ -1,114 +1,169 @@
 ---
 
 ---
-<section class="contact-form-section" id="contact">
-  <h2>Kontaktformular</h2>
-  <form class="contact-form" method="POST" id="form">
-    <input type="hidden" name="access_key" value="805942c8-e634-4e6c-9c1b-0e45bb6d7512" />
 
-    <label for="email">Ihr Name</label>
-    <input type="text" name="name" placeholder="Name" required>
+<section aria-labelledby="contact-form-title">
+  <div class="wrapper">
 
-    <label for="email">E-Mail-Adresse</label>
-    <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+    <div class="topDivider" aria-hidden="true">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+      </svg>
+    </div>
 
-    <label for="message">Nachricht</label>
-    <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
-    <button type="submit">Absenden</button>
+    <h2 class="dark" id="contact-form-title">Lassen Sie uns ins Gespräch kommen</h2>
+    <form id="contact-form" method="POST">
+      <label for="from_name">Name</label>
+      <input type="text" id="from_name" name="from_name" required />
+      <label for="from_email">Ihre Email</label>
+      <input type="email" id="from_email" name="from_email" required />
+      <label for="message">Nachricht</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Nachricht senden</button>
+      <div id="form-status" aria-live="polite"></div>
+    </form>
 
-    <div id="result"></div>
-  </form>
+    <div class="bottomDivider" aria-hidden="true">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+  </div>
 </section>
 
 <style>
-  .contact-form-section {
-    padding: 2rem;
-    font-family: Arial, sans-serif;
-    background-color: var(--clr-bg-lt);
+  .wrapper {
+    background-color: var(--clr-bg);
+    padding: 8rem 0;
+    position: relative;
   }
 
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 600px;
+  #contact-form {
+    display: grid;
+    max-width: 800px;
     margin: 0 auto;
+    padding: 0 4rem;
+    border-radius: 16px;
   }
 
-  .contact-form label {
-    font-weight: bold;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: #007bff;
+  button {
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--clr-font-dark);
+    padding: 0.5em 1rem;
+    border: 1px solid var(--clr-font-dark);
+    max-width: fit-content;
+    margin: 1rem auto;
     outline: none;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
-  .contact-form button {
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
+  button::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--clr-bg-dark-full);
+    transform-origin: center right;
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in-out;
+    border-radius: 12px;
+  }
+
+  button:hover {
     cursor: pointer;
+    color: var(--clr-font-light);
+    border: 1px solid var(--clr-font-light);
+    overflow: hidden;
   }
 
-  .contact-form button:hover {
-    background-color: #0056b3;
+  button:hover::before {
+    transform-origin: center left;
+    transform: scaleX(1);
   }
+
+  /* Trenner */
+
+.topDivider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .topDivider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+  }
+
+  .topDivider .shape-fill {
+      fill: #432077;
+  }
+
+  .zindex {
+    z-index: 1;
+  }
+
+  .bottomDivider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg) translateY(-2px);
+  }
+
+  .bottomDivider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+  }
+
+  .bottomDivider .shape-fill {
+    fill: #432077;
+  }
+
+  /* Trenner ende */
 </style>
 
-<script is:inline>
-  const form = document.getElementById('form');
-  const result = document.getElementById('result');
+<script>
+  import emailjs from 'emailjs-com';
 
-  form.addEventListener('submit', function(e) {
-      const formData = new FormData(form);
-      e.preventDefault();
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
 
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      document.getElementById('form-status').focus();
 
-      result.innerHTML = "Please wait..."
+      try {
+        const result = await emailjs.sendForm(
+          'service_ettxzoe', // Dein Service-ID
+          'template_0hjap8u', // Deine Template-ID
+          form,
+          'R9BFHmOMxHBo6sm0k' // Dein Public API Key
+        );
 
-      fetch('https://api.web3forms.com/submit', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json'
-              },
-              body: json
-          })
-          .then(async (response) => {
-              let json = await response.json();
-              if (response.status == 200) {
-                  result.innerHTML = json.message;
-              } else {
-                  console.log(response);
-                  result.innerHTML = json.message;
-              }
-          })
-          .catch(error => {
-              console.log(error);
-              result.innerHTML = "Something went wrong!";
-          })
-          .then(function() {
-              form.reset();
-              setTimeout(() => {
-                  result.style.display = "none";
-              }, 3000);
-          });
+        console.log('EmailJS response:', result);
+        alert('Message sent successfully!');
+        form.reset();
+      } catch (error) {
+        console.error('Failed to send message:', error);
+        alert('Failed to send message. Please try again later.');
+      }
+    });
   });
-  </script>
+</script>

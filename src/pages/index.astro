@@ -16,11 +16,17 @@ import Footer from "../components/Footer.astro";
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eventfotografie, Businessportraits & Reportagen in Berlin – professionelle Bilder für Firmenfeiern, Messen & Magazine. Authentische Momente mit langjähriger Erfahrung festgehalten.">
+    <meta name="keywords" content="Eventfotografie Berlin, Businessportraits, Reportagefotografie, Firmenfeier Fotograf, Messefotografie, Unternehmensfotografie">
+    <meta name="author" content="Marco Baaß">
+    <title>Eventfotografie & Businessportraits in Berlin | Marco Baaß</title>
+    <meta property="og:title" content="Eventfotografie & Businessportraits in Berlin | Marco Baaß">
+    <meta property="og:description" content="Professionelle Fotografie für Firmenfeiern, Messen & Businessportraits. Authentisch & ausdrucksstark.">
+    <!-- <meta property="og:image" content="https://deinewebsite.de/images/vorschaubild.jpg"> -->
+    <!-- <meta property="og:url" content="https://deinewebsite.de"> -->
+    <meta property="og:type" content="website">
 	</head>
 	<body>
     <Navbar/>
@@ -35,3 +41,25 @@ import Footer from "../components/Footer.astro";
     <Footer />
   </body>
 </html>
+
+<script type="application/ld+json">
+  {
+     "@context": "https://schema.org",
+     "@type": "LocalBusiness",
+     "name": "Marco Baaß - Eventfotografie & Businessportraits",
+     "url": "https://deinewebsite.de",
+    //  "image": "https://deinewebsite.de/logo.jpg",
+     "description": "Eventfotografie und Businessportraits in Berlin mit langjähriger Erfahrung. Hochwertige Bilder für Unternehmen, Magazine & Events.",
+     "address": {
+         "@type": "PostalAddress",
+         "streetAddress": "Pasteurstr. 53",
+         "addressLocality": "Berlin",
+         "postalCode": "10407",
+         "addressCountry": "DE"
+     },
+     "telephone": "+49 151 19345758",
+     "sameAs": [
+      "https://www.linkedin.com/in/marcobaass"
+    ]
+  }
+  </script>
