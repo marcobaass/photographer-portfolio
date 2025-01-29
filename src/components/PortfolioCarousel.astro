@@ -32,14 +32,13 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
 <div id="modal" class="modal">
   <div class="modalContent">
     <img id="modalImg" class="modalImg" />
-    <button id="next"><img src="src/svg/arrow_back.svg" style="rotate: 180deg;" alt=""></button>
-    <button id="prev"><img src="src/svg/arrow_back.svg" alt=""></button>
-    <button id="close"><img src="src/svg/arrow_back.svg" style="rotate: 270deg;" alt=""></button>
+    <button id="next"><img src="src/svg/arrow_back.svg" style="rotate: 180deg;" alt="" id="nextImg"></button>
+    <button id="prev"><img src="src/svg/arrow_back.svg" alt=""  id="prevImg"></button>
+    <button id="close"><img src="src/svg/arrow_back.svg" style="rotate: 270deg;" alt="" id="closeImg"></button>
   </div>
 </div>
 
 <style>
-  /* @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap'); */
 
   .light{
     color: var(--clr-font-light)
@@ -109,6 +108,18 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
     transform: translateY(-50%)
   }
 
+  #prevImg:hover,
+  #nextImg:hover,
+  #closeImg:hover {
+    transition: scale 125ms ease-in-out;
+  }
+
+  #prevImg:hover,
+  #nextImg:hover,
+  #closeImg:hover {
+    scale: 1.2;
+  }
+
   #prev {
     position: absolute;
     left: 2%;
@@ -160,6 +171,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
   const close = document.getElementById('close');
   const next = document.getElementById('next');
   const prev = document.getElementById('prev');
+  const prevImg = document.getElementById('prevImg');
+  const nextImg = document.getElementById('nextImg');
+
   let currentIndex = 0;
 
   const thumbnails = Array.from(document.querySelectorAll('.image'));
@@ -199,14 +213,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
   });
 
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    if (e.target !== modalImg && e.target !== prevImg && e.target !==prev && e.target !== nextImg && e.target !==next) {
       modal.style.display = 'none';
-
       document.body.style.overflow = '';
     }
   })
-
-
 
   gsap.from(".portfolio-bg", {
     scrollTrigger: {
