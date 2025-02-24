@@ -1,7 +1,7 @@
 ---
 
 ---
-<nav class='navbar'>
+<nav class='navbar' aria-label="Hauptnavigation Desktop">
   <ul>
     <li><a href="#leistung" class="hover-underline-animation center">Leistung</a></li>
     <li><a href="#portfolio" class="hover-underline-animation center">Portfolio</a></li>
@@ -10,16 +10,16 @@
   </ul>
 </nav>
 
-<nav class="hamburger">
-  <label class="hamburger-menu">
-    <input type="checkbox">
+<nav class="hamburger" aria-label="Hauptnavigation Mobil">
+  <label class="hamburger-menu" aria-label="Menü öffnen">
+    <input type="checkbox" id="menu-toggle">
   </label>
   <aside class="sidebar">
       <ul>
-        <li><a href="/" class="hover-underline-animation center">Leistung</a></li>
-        <li><a href="/" class="hover-underline-animation center">Portfolio</a></li>
-        <li><a href="/" class="hover-underline-animation center">Über mich</a></li>
-        <li><a href="/" class="hover-underline-animation center">Kontakt</a></li>
+        <li><a href="#leistung" class="hover-underline-animation center">Leistung</a></li>
+        <li><a href="#portfolio" class="hover-underline-animation center">Portfolio</a></li>
+        <li><a href="#about" class="hover-underline-animation center">Über mich</a></li>
+        <li><a href="#contact-form-title" class="hover-underline-animation center">Kontakt</a></li>
       </ul>
   </aside>
 </nav>
@@ -32,13 +32,18 @@
     letter-spacing: 2.8px;
   }
 
+  a:focus-visible {
+    outline: 2px solid #fff; /* oder eine sichtbare Farbe */
+    outline-offset: 2px;
+  }
+
   .hamburger-menu {
     display: none;
   }
 
   .sidebar {
     display: none;
-    z-index: 11;
+    z-index: 1000;
   }
 
   .navbar {
@@ -120,13 +125,13 @@
       position: fixed;
       top: var(--hamburger-margin);
       left: var(--hamburger-margin);
-      z-index: 21;
-      cursor: pointer
+      z-index: 1001;
+      cursor: pointer;
     }
 
     .hamburger-menu:has(input:checked) {
       --foreground: white;
-      --background: #333;
+      --background: white;
     }
 
     .hamburger-menu:has(input:focus-visible)::before,
@@ -140,9 +145,10 @@
     .hamburger-menu::after,
     .hamburger-menu input {
       content: "";
+      box-shadow: 1px 1px 1px 1px gray;
       width: var(--bar-width);
       height: var(--bar-heigth);
-      background-color: var(--foreground);
+      background-color: var(--background);
       border-radius: 9999px;
       transform-origin: left center;
       transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
@@ -160,12 +166,14 @@
       rotate: 45deg;
       width: var(--x-width);
       translate: 0 calc(var(--bar-heigth) / -2);
+      box-shadow: none;
     }
 
     .hamburger-menu:has(input:checked)::after {
       rotate: -45deg;
       width: var(--x-width);
       translate: 0 calc(var(--bar-heigth) / 2);
+      box-shadow: none;
     }
 
     .hamburger-menu input:checked {
@@ -200,3 +208,18 @@
   }
 
 </style>
+
+<script>
+  document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', () => {
+      (document.getElementById('menu-toggle') as HTMLInputElement).checked = false;
+      document.getElementById('menu-toggle').setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Menü-Schalter für Barrierefreiheit aktualisieren
+  document.getElementById('menu-toggle')?.addEventListener('change', function () {
+  const checkbox = this as HTMLInputElement;
+  checkbox.setAttribute('aria-expanded', checkbox.checked ? 'true' : 'false');
+});
+</script>

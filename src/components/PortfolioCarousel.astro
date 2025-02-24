@@ -4,10 +4,17 @@ import { getImage } from 'astro:assets';
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/*.{jpeg,jpg,png,gif}', { eager: true });
 
 // Erstelle die Thumbnails mit `await getImage`
-  const thumbnails = await Promise.all(Object.values(images).map(async (image) => ({
+const thumbnails = await Promise.all(Object.entries(images).map(async ([path, image]) => {
+  // Dateinamen extrahieren und formatieren
+  const filename = path.split('/').pop()?.split('.')[0]?.replace(/[-_]/g, ' ') || 'Galeriebild';
+  const altText = filename.charAt(0).toUpperCase() + filename.slice(1); // Erstes Wort groß
+
+  return {
     thumb: (await getImage({ src: image.default, width: 300, format: 'webp' })).src,
-    fullsize: (await getImage({ src: image.default, width: 1000, format: 'webp' })).src
-  })));
+    fullsize: (await getImage({ src: image.default, width: 1000, format: 'webp' })).src,
+    alt: altText
+  };
+}));
 ---
 
 <section class="portfolio-bg" id="portfolio">
@@ -20,7 +27,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
           src={image.thumb}
           width="300"
           height="200"
-          alt={`Gallery Image ${index + 1}`}
+          alt={image.alt}
           data-index={index}
           data-fullsize={image.fullsize}
         />
@@ -32,9 +39,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
 <div id="modal" class="modal">
   <div class="modalContent">
     <img id="modalImg" class="modalImg" />
-    <button id="next"><img src="src/svg/arrow_back.svg" style="rotate: 180deg;" alt="" id="nextImg"></button>
-    <button id="prev"><img src="src/svg/arrow_back.svg" alt=""  id="prevImg"></button>
-    <button id="close"><img src="src/svg/arrow_back.svg" style="rotate: 270deg;" alt="" id="closeImg"></button>
+    <button id="next"><img src="/svg/arrow_back.svg" style="rotate: 180deg;" alt="Nächstes Bild" id="nextImg"></button>
+    <button id="prev"><img src="/svg/arrow_back.svg" alt="Vorheriges Bild"  id="prevImg"></button>
+    <button id="close"><img src="/svg/arrow_back.svg" style="rotate: 270deg;" alt="Galerie schließen" id="closeImg"></button>
   </div>
 </div>
 
@@ -143,19 +150,18 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/galleryImages/
     font-size: 3rem;
   }
 
-  @media only screen and (max-width:430px) {
 
+  @media only screen and (max-width:768px) {
+    .portfolioStream {
+      column-count: 5;
+    }
+  }
+
+  @media only screen and (max-width:430px) {
     .portfolioStream {
       column-count: 3;
     }
   }
-
-  @media only screen and (max-width:768px) {
-
-.portfolioStream {
-  column-count: 5;
-}
-}
 
 </style>
 

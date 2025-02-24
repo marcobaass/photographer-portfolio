@@ -2,17 +2,18 @@
 import { Image } from 'astro:assets';
 import me from '../aboutMeImage/marco_baass.jpg'
 ---
-<article id="about">
+<article id="about" aria-labelledby="about-title">
 
-  <div class="topDivider" aria-hidden="true">
+  <div class="topDivider" role="presentation" aria-hidden="true">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
       <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
     </svg>
   </div>
 
   <div class="aboutMe">
-    <Image src={ me } alt="" class='img' />
-    <h2 class="dark">Über mich</h2>
+    <Image src={ me } alt="Event- und Businessfotograf Marco Baass aus Berlin - Porträtfoto" class='img' />
+    <h2 class="dark" id="about-title">Über mich</h2>
+    <h3>Event- & Businessfotograf aus Berlin</h3>
     <p class="dark">
       Seit über 15 Jahren arbeite und lebe ich als professioneller Fotograf in Berlin und habe mich auf Eventfotografie, Porträtaufnahmen und Auftragsarbeiten für Magazine und Zeitschriften spezialisiert. Mein Ziel ist es, die Essenz eines Moments einzufangen – sei es auf Firmenveranstaltungen, Gala-Events oder in individuellen Porträtsessions. Mit einem besonderen Gespür für die richtige Szene und authentische Emotionen schaffe ich Bilder, die nachhaltig wirken und Geschichten erzählen.
     </p>
@@ -84,6 +85,7 @@ import me from '../aboutMeImage/marco_baass.jpg'
   article {
     background-color: var(--clr-bg);
     padding: var(--space-xl) 0;
+    position: relative;
   }
 
   .aboutMe {
@@ -95,7 +97,6 @@ import me from '../aboutMeImage/marco_baass.jpg'
   .img {
     max-width: 240px;
     border-radius:64px 0 64px 0;
-    float: left;
     margin-right: 1em;
     margin-bottom: 1em;
     transform: translateY(0.4em)
@@ -106,7 +107,7 @@ import me from '../aboutMeImage/marco_baass.jpg'
     padding: 0;
   }
 
-  h2 {
+  h2, h3 {
     margin: 0 0 0.5em 0;
     padding: 0;
   }
@@ -115,14 +116,21 @@ import me from '../aboutMeImage/marco_baass.jpg'
     color: var(--clr-font-dark);
   }
 
-  article {
-    position: relative;
-  }
-
   @media only screen and (max-width:430px) {
     .aboutMe {
       margin: var(--space-l);
     }
+  }
 
+  @media (min-width: 768px) {
+    .img {
+      float: left;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .img {
+      margin: 0 auto 1.5em;
+    }
   }
 </style>

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Allow: /public/
+
+Sitemap: https://baass-fotografie.de/sitemap.xml
