@@ -3,4 +3,4 @@ Disallow: /admin/
 Disallow: /private/
 Allow: /public/
 
-Sitemap: https://baass-fotografie.de/sitemap.xml
+Sitemap: https://www.baass-fotografie.de/sitemap.xml

@@ -1,6 +1,9 @@
 RewriteEngine On
 
-# Erzwinge HTTPS und www.
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\.baass-fotografie\.de$ [NC]
+# Stelle sicher, dass "www." korrekt erzwungen wird
+RewriteCond %{HTTP_HOST} ^baass-fotografie\.de [NC]
 RewriteRule ^(.*)$ https://www.baass-fotografie.de/$1 [L,R=301]
+
+# Erzwinge HTTPS für alle Anfragen
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
