@@ -1,5 +1,7 @@
 ---
+import BaseLayout from '../Layouts/BaseLayout.astro';
 import { getImage } from 'astro:assets';
+
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/galleryImages/*.{jpeg,jpg,png,gif}',
@@ -43,46 +45,96 @@ const thumbnails = await Promise.all(
 );
 ---
 
-<section class="portfolio">
-  <div class="portfolio-container" id="portfolio-container">
-    {thumbnails.map((image, index) => (
-      <div
-        class="portfolio-item"
-        data-index={index}
-        data-fullsize={image.fullsize}
-        data-ratio={image.ratio}
-      >
-        <img
-          src={image.thumb}
-          alt={image.alt}
-          loading={index < 4 ? 'eager' : 'lazy'}
-          decoding="async"
-        />
-      </div>
-    ))}
-  </div>
-</section>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eventfotografie, Businessportraits & Reportagen in Berlin - Fotograf für Firmenfeiern, Messen, Magazine. Erfahrung für authentische Momente.">
+    <meta name="keywords" content="Eventfotografie Berlin, Businessportraits, Reportagefotografie, Firmenfeier Fotograf, Messefotografie, Unternehmensfotografie">
+    <meta name="author" content="Marco Baaß">
+    <title>Eventfotografie & Businessportraits in Berlin | Marco Baaß</title>
+    <meta property="og:title" content="Eventfotografie & Businessportraits in Berlin | Marco Baaß">
+    <meta property="og:description" content="Professionelle Fotografie für Firmenfeiern, Messen & Businessportraits. Authentisch & ausdrucksstark.">
+    <!-- <meta property="og:image" content="https://deinewebsite.de/images/vorschaubild.jpg"> -->
+    <!-- <meta property="og:url" content="https://deinewebsite.de"> -->
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.png">
+    <link rel="canonical" href="https://www.baass-fotografie.de/" />
+	</head>
+	<body>
+    <BaseLayout>
+      <section class="portfolio">
+        <div class="portfolio-container" id="portfolio-container">
+          {thumbnails.map((image, index) => (
+            <div
+              class="portfolio-item"
+              data-index={index}
+              data-fullsize={image.fullsize}
+              data-ratio={image.ratio}
+            >
+              <img
+                src={image.thumb}
+                alt={image.alt}
+                loading={index < 4 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    </BaseLayout>
+  </body>
 
 <style>
+
   .portfolio {
     position: relative;
-    overflow: hidden;
-    padding: 2rem 0;
+    overflow: visible;
+    padding: 7rem 0;
   }
 
   .portfolio-container {
+    --cols: 1;
+    --col-gap: 0px;
+    --row-gap: 0px;
+    --pad-x: 10px;
+    --pad-y: 10px;
     position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) + 120px) var(--pad-x);
+    align-items: start;
     width: 100%;
-    min-height: 220vh;
+  }
+
+  .portfolio-col {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    will-change: transform;
+  }
+
+  .portfolio-col:has(.portfolio-item:hover) {
+    z-index: 1000;
   }
 
   .portfolio-item {
-    position: absolute;
-    left: var(--x, 0px);
-    top: var(--y, 0px);
+    display: block;
+    position: relative;
     width: var(--w, 260px);
     height: var(--h, 180px);
-    will-change: transform;
+    margin-inline: auto;    
+    opacity: 0.75;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .portfolio-item:hover {
+      transform: scale(1.1);
+      opacity: 1;
+      z-index: 1000;
   }
 
   .portfolio-item img {
@@ -92,6 +144,7 @@ const thumbnails = await Promise.all(
     display: block;
     border-radius: 12px;
   }
+
 </style>
 
 <script>
@@ -103,6 +156,7 @@ const thumbnails = await Promise.all(
   const items = Array.from(
     document.querySelectorAll<HTMLDivElement>('.portfolio-item')
   );
+  let columnTweens: gsap.core.Tween[] = [];
 
   function placeItems() {
     if (!container || items.length === 0) return;
@@ -110,18 +164,53 @@ const thumbnails = await Promise.all(
     // Breakpoints based on window width
     const vw = window.innerWidth;
     // Number of columns based on window width
-    const cols = vw >= 1191 ? 3 : 2;
+    let cols = 1;
+    if (vw >= 1280) {
+      cols = 3;
+    } else if (vw >= 848) {
+      cols = 2;
+    } else {
+      cols = 1;
+    }
+
     // Gap between items based on window width
-    const gap = vw >= 1191 ? 96 : 64;
-    // Padding on the left and right of the container based on window width
-    const padX = vw >= 1191 ? 96 : 40;
-    const padY = vw >= 1191 ? 96 : 40;
+    let colGap = 24;
+    let rowGap = 48;
+    let padX = 20;
+    let padY = 20;
+    if (vw >= 1280) {
+      colGap = 96;
+      rowGap = 80;
+      padX = 48;
+      padY = 48;
+    } else if (vw >= 848) {
+      colGap = 64;
+      rowGap = 56;
+      padX = 32;
+      padY = 32;
+    } 
+
+    container.style.setProperty('--cols', String(cols));
+    container.style.setProperty('--col-gap', `${colGap}px`);
+    container.style.setProperty('--row-gap', `${rowGap}px`);
+    container.style.setProperty('--pad-x', `${padX}px`);
+    container.style.setProperty('--pad-y', `${padY}px`);
+
+    container.replaceChildren();
+
+    const colEls = Array.from({ length: cols }, (_, col) => {
+      const colEl = document.createElement('div');
+      colEl.className = 'portfolio-col';
+      colEl.dataset.col = String(col);
+      container.appendChild(colEl);
+      return colEl;
+    });
 
     const containerW = container.clientWidth;
-    const cellW = (containerW - padX * 2 - gap * (cols - 1)) / cols;
+    const cellW = Math.max(0, (containerW - padX * 2 - colGap * (cols - 1)) / cols);
     const targetLong = Math.min(450, cellW * 0.9);
 
-    const cursorYByCol = Array(cols).fill(padY);
+    const itemCountByCol = Array(cols).fill(0);
 
     items.forEach((item, index) => {
       const ratio = Number(item.dataset.ratio || 1);
@@ -130,59 +219,48 @@ const thumbnails = await Promise.all(
       const w = isLandscape ? targetLong : targetLong * ratio;
       const h = isLandscape ? targetLong / ratio : targetLong;
 
-      const col = index % cols;
-      const baseX = padX + col * (cellW + gap);
-
-      const safeMaxX = Math.max(0, cellW - w);
-      const scatterX = Math.random() * safeMaxX;
-
-      const x = baseX + scatterX;
-      const y = cursorYByCol[col];
-
-      item.style.setProperty('--x', `${x}px`);
-      item.style.setProperty('--y', `${y}px`);
       item.style.setProperty('--w', `${w}px`);
       item.style.setProperty('--h', `${h}px`);
 
-      cursorYByCol[col] = y + h + gap + Math.random() * 150;
-      item.dataset.speed = String(((Math.random() * 3) + 2).toFixed(2));
+      const col = index % cols;
+      item.dataset.col = String(col);
+      item.style.marginTop = itemCountByCol[col] === 0 ? '0px' : `${rowGap}px`;
+      colEls[col].appendChild(item);
+      itemCountByCol[col] += 1;
     });
 
-    const maxY = Math.max(...cursorYByCol) + padY;
-    container.style.minHeight = `${maxY}px`;
+    columnTweens.forEach((tween) => tween.kill());
+    columnTweens = [];
 
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    colEls.forEach((colEl) => {
+      const col = Number(colEl.dataset.col || 0);
+      const fromY = col % 2 === 0 ? 160 : -160;
 
-    items.forEach((item) => {
-      gsap.from(item, {
-        y: () => Math.random() * 300 + 150 + 'px',
+      gsap.set(colEl, { y: 0 });
+
+      const tween = gsap.to(colEl, {
+        y: fromY,
         ease: 'none',
         scrollTrigger: {
-          trigger: item,
-          start: 'top 100%',
-          end: 'bottom 20%',
-            scrub: true,
-          },
-        })
+          trigger: container,
+          start: 'top 50%',
+          end: 'bottom 100%',
+          scrub: 1.5,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      columnTweens.push(tween);
     });
 
-    // items.forEach((item) => {
-    //   const speed = Number(item.dataset.speed || 0);
-    //   gsap.fromTo(item, {
-    //     y: 0,
-    //   }, {
-    //     y: speed * 120,
-    //     ease: 'none',
-    //     scrollTrigger: {
-    //       trigger: item,
-    //       start: 'top bottom',
-    //       end: 'bottom top',
-    //       scrub: true,
-    //     },
-    //   });
-    // });
+    ScrollTrigger.refresh();
   }
 
   placeItems();
-  window.addEventListener('resize', placeItems);
+  let resizeRaf: number | undefined;
+  window.addEventListener('resize', () => {
+    if (resizeRaf) cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(placeItems);
+  });
+
 </script>

@@ -2,12 +2,18 @@
 
 ---
 <nav class='navbar' aria-label="Hauptnavigation Desktop">
-  <ul>
-    <li><a href="#leistung" class="hover-underline-animation center">Leistung</a></li>
-    <li><a href="#portfolio" class="hover-underline-animation center">Portfolio</a></li>
-    <li><a href="#about" class="hover-underline-animation center">Über mich</a></li>
-    <li><a href="#contact-form-title" class="hover-underline-animation center">Kontakt</a></li>
-  </ul>
+  <div class="navbar-content">
+    <a href="/" class="logo">
+      <img src="/favicon.png" alt="Marco Baaß Fotografie" width="32" height="32" />
+      Marco Baaß Fotografie
+    </a>
+    <ul>
+      <li><a href="#leistung" class="hover-underline-animation center">Leistung</a></li>
+      <li><a href="/portfolio" class="hover-underline-animation center">Portfolio</a></li>
+      <li><a href="#about" class="hover-underline-animation center">Über mich</a></li>
+      <li><a href="#contact-form-title" class="hover-underline-animation center">Kontakt</a></li>
+    </ul>
+  </div>
 </nav>
 
 <nav class="hamburger" aria-label="Hauptnavigation Mobil">
@@ -32,6 +38,27 @@
     letter-spacing: 2.8px;
   }
 
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 3rem;
+  }
+
+  .logo img {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   a:focus-visible {
     outline: 2px solid #fff; /* oder eine sichtbare Farbe */
     outline-offset: 2px;
@@ -51,7 +78,7 @@
     width: 100vw;
     top: 0;
     list-style: none;
-    z-index: 50;
+    z-index: 9999;
     background-color: var(--clr-bg-op);
     padding: 1.25rem 0 1.25rem;
   }

@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components'
 // https://github.com/natemoo-re/astro-icon?tab=readme-ov-file
 // https://icon-sets.iconify.design/mdi/
 ---
-<footer>
+<footer class="footer">
 
   <div class="footerContent">
     <h3 class="light">Marco Baaß Fotografie</h3>
@@ -150,6 +150,11 @@ import { Icon } from 'astro-icon/components'
 </div>
 
 <style>
+  .footer {
+    padding-bottom: var(--space-3xs);
+  }
+
+
   #impModal h1 {
     color: black;
   }
