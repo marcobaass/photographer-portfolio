@@ -3,6 +3,7 @@
 [x] adjustable per image amount
 [x] hoverable 
 [x] parallax
-[ ] navbar + Footer (Keine Hintergrundfarben?!?!)
-[ ] click images to get full width
-[ ] Verlinkung NavBar?!?!
+[x] navbar + Footer (Keine Hintergrundfarben?!?!)
+[x] click images to get full width
+[ ] Verlinkung NavBar?!?! Leistung / Über mich / Kontakt >>> alles unterseiten
+[ ] Text für Portolio seite? SEO?

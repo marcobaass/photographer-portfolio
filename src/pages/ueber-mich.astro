@@ -1,0 +1,40 @@
+---
+import AboutMeAstro from '../components/AboutMe.astro';
+import Clients from '../components/Clients.astro';
+import BaseLayout from '../Layouts/BaseLayout.astro';
+---
+
+<html lang="de">
+	<head>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eventfotografie, Businessportraits & Reportagen in Berlin - Fotograf für Firmenfeiern, Messen, Magazine. Erfahrung für authentische Momente.">
+    <meta name="keywords" content="Eventfotografie Berlin, Businessportraits, Reportagefotografie, Firmenfeier Fotograf, Messefotografie, Unternehmensfotografie">
+    <meta name="author" content="Marco Baaß">
+    <title>Eventfotografie & Businessportraits in Berlin | Marco Baaß</title>
+    <meta property="og:title" content="Eventfotografie & Businessportraits in Berlin | Marco Baaß">
+    <meta property="og:description" content="Professionelle Fotografie für Firmenfeiern, Messen & Businessportraits. Authentisch & ausdrucksstark.">
+    <!-- <meta property="og:image" content="https://deinewebsite.de/images/vorschaubild.jpg"> -->
+    <!-- <meta property="og:url" content="https://deinewebsite.de"> -->
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.png">
+    <link rel="canonical" href="https://www.baass-fotografie.de/" />
+	</head>
+	<body>
+    <BaseLayout>
+      <section class="auboutme-container">
+        <AboutMeAstro class="auboutme-container" />
+      </section>
+      <Clients />
+    </BaseLayout>
+  </body>
+
+  <style>
+    .auboutme-container {
+      margin-top: 6rem;
+    }
+  </style>
+
+
+
+ 

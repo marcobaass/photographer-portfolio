@@ -66,7 +66,8 @@ const thumbnails = await Promise.all(
       <section class="portfolio">
         <div class="portfolio-container" id="portfolio-container">
           {thumbnails.map((image, index) => (
-            <div
+            <button
+              type="button"
               class="portfolio-item"
               data-index={index}
               data-fullsize={image.fullsize}
@@ -78,10 +79,14 @@ const thumbnails = await Promise.all(
                 loading={index < 4 ? 'eager' : 'lazy'}
                 decoding="async"
               />
-            </div>
+            </button>
           ))}
         </div>
       </section>
+
+      <div class="lightbox" id="lightbox" hidden>
+        <img class="lightbox-image">
+      </div>
     </BaseLayout>
   </body>
 
@@ -135,6 +140,7 @@ const thumbnails = await Promise.all(
       transform: scale(1.1);
       opacity: 1;
       z-index: 1000;
+      cursor: pointer;
   }
 
   .portfolio-item img {
@@ -143,6 +149,34 @@ const thumbnails = await Promise.all(
     object-fit: cover;
     display: block;
     border-radius: 12px;
+  }
+
+  .lightbox {
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    opacity: 0;
+  }
+  
+  .lightbox[hidden] {
+    display: none;
+    pointer-events: none;
+  }
+
+  .lightbox-image {
+    max-width: 95vw;
+    max-height: 95dvh;
+    object-fit: contain;
+  }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
   }
 
 </style>
@@ -262,5 +296,45 @@ const thumbnails = await Promise.all(
     if (resizeRaf) cancelAnimationFrame(resizeRaf);
     resizeRaf = requestAnimationFrame(placeItems);
   });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.querySelector('.lightbox-image');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
+
+const openLightbox = (item) => {
+  const fullsize = item.dataset.fullsize
+  const altText = item.querySelector('img').alt;
+
+  lightboxImage.src = fullsize
+  lightboxImage.alt = altText;
+  lightbox.hidden = false;
+  document.body.style.overflow = 'hidden';
+
+  gsap.to('.lightbox', { opacity: 1, duration: 1, ease: 'power2.out'})
+}
+
+const closeLightbox= () => {  
+  gsap.to('.lightbox', {
+    opacity: 0,
+    duration: 0.25,
+    ease: 'power2.out',
+    onComplete: () => {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute('src')
+      document.body.style.overflow = ''
+    }
+  })  
+}
+
+items.forEach((item) => {
+  item.addEventListener('click', () => openLightbox(item));
+});
+
+lightbox.addEventListener('click', closeLightbox)
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !lightbox.hidden) closeLightbox()
+})
 
 </script>
