@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../Layouts/BaseLayout.astro';
 import { getImage } from 'astro:assets';
-
+import Contact from '../components/Contact.astro';
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/galleryImages/*.{jpeg,jpg,png,gif}',
@@ -87,6 +87,8 @@ const thumbnails = await Promise.all(
       <div class="lightbox" id="lightbox" hidden>
         <img class="lightbox-image">
       </div>
+
+      <Contact />
     </BaseLayout>
   </body>
 
