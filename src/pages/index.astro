@@ -2,54 +2,31 @@
 import ImageSlider from "../components/ImageSlider.astro";
 import IntroPhrases from "../components/IntroPhrases.astro";
 import CategoryFadeIn from "../components/categoryFadeIn.astro";
-import Navbar from "../components/Navbar.astro";
-import '../components/style.css';
 import Kompetenz from "../components/kompetenz.astro";
-import PortfolioCarousel from "../components/PortfolioCarousel.astro";
-import AboutMe from "../components/AboutMe.astro";
-import Clients from "../components/Clients.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../Layouts/BaseLayout.astro";
 
 
 ---
-
-<html lang="de">
-	<head>
-		<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Eventfotografie, Businessportraits & Reportagen in Berlin - Fotograf für Firmenfeiern, Messen, Magazine. Erfahrung für authentische Momente.">
-    <meta name="keywords" content="Eventfotografie Berlin, Businessportraits, Reportagefotografie, Firmenfeier Fotograf, Messefotografie, Unternehmensfotografie">
-    <meta name="author" content="Marco Baaß">
-    <title>Eventfotografie & Businessportraits in Berlin | Marco Baaß</title>
-    <meta property="og:title" content="Eventfotografie & Businessportraits in Berlin | Marco Baaß">
-    <meta property="og:description" content="Professionelle Fotografie für Firmenfeiern, Messen & Businessportraits. Authentisch & ausdrucksstark.">
-    <!-- <meta property="og:image" content="https://deinewebsite.de/images/vorschaubild.jpg"> -->
-    <!-- <meta property="og:url" content="https://deinewebsite.de"> -->
-    <meta property="og:type" content="website">
-    <link rel="icon" href="/favicon.png">
-    <link rel="canonical" href="https://www.baass-fotografie.de/" />
-	</head>
-	<body>
-    <Navbar/>
+  <BaseLayout
+    title="Eventfotografie & Businessportraits in Berlin | Marco Baaß"
+    description="Eventfotografie, Businessportraits & Reportagen in Berlin - Fotograf für Firmenfeiern, Messen, Magazine. Erfahrung für authentische Momente."
+    canonical="https://www.baass-fotografie.de/"
+  >
     <ImageSlider />
     <IntroPhrases/>
     <CategoryFadeIn />
     <Kompetenz />
-    <!-- <PortfolioCarousel /> -->
-    <!-- <AboutMe /> -->
-    <!-- <Clients /> -->
     <Contact />
-    <Footer />
-  </body>
-</html>
+  </BaseLayout>
+
 
 <script type="application/ld+json">
   {
      "@context": "https://schema.org",
      "@type": "LocalBusiness",
      "name": "Marco Baaß - Eventfotografie & Businessportraits",
-     "url": "https://deinewebsite.de",
+     "url": "https://www.baass-fotografie.de/",
     //  "image": "https://deinewebsite.de/logo.jpg",
      "description": "Eventfotografie und Businessportraits in Berlin mit langjähriger Erfahrung. Hochwertige Bilder für Unternehmen, Magazine & Events.",
      "address": {

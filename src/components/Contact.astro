@@ -14,7 +14,7 @@
     <h2 class="dark" id="contact-form-title">Lassen Sie uns ins Gespräch kommen</h2>
     <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <label for="from_name">Name</label>
-      <input type="hidden" name="access_key" value="ba7480a0-a741-46fc-81c2-364b9e5e091b">
+      <!-- <input type="hidden" name="access_key" value="ba7480a0-a741-46fc-81c2-364b9e5e091b"> -->
       <input type="text" id="from_name" name="name" required />
       <label for="from_email">Ihre Email</label>
       <input type="email" id="from_email" name="email" required />
@@ -142,8 +142,10 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('form');
-    const submitBtn = form.querySelector('button[type="submit"]');
+    const form = document.querySelector<HTMLFormElement>('#contact-form');
+    if (!form) return;
+    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (!submitBtn) return;
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();

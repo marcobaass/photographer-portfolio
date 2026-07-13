@@ -151,6 +151,7 @@ import { Icon } from 'astro-icon/components'
 
 <style>
   .footer {
+    background-color: var(--clr-bg-dark-full);
     padding-bottom: var(--space-3xs);
   }
 
@@ -163,9 +164,6 @@ import { Icon } from 'astro-icon/components'
     list-style:square ;
   }
 
-  body {
-    position: relative;
-  }
 
   .footerContent {
     margin: var(--space-l);
@@ -220,7 +218,7 @@ import { Icon } from 'astro-icon/components'
     padding: 2rem;
     overflow: scroll;
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--clr-bg-dark-full);
   }
 
   .modal-content {
@@ -246,17 +244,11 @@ import { Icon } from 'astro-icon/components'
     const impressum = document.getElementById('impModal');
     const closeButton = document.getElementById('closeImpressum');
 
-    console.log('Button:', button);
-    console.log('Impressum Modal:', impressum);
-    console.log('Close Button:', closeButton);
-
     closeButton.addEventListener('click', () => {
-      console.log('Close button clicked');
       impressum.classList.toggle('hidden');
     });
 
     button.addEventListener('click', () => {
-      console.log('Impressum button clicked');
       impressum.classList.toggle('hidden');
     });
   });

@@ -39,16 +39,14 @@ import 'swiper/css/pagination';
 </div>
 
 <style>
-  html,
-  body {
-    position: relative;
-    height: 100%;
-
+  
+  .swiper {
+    width: 100%;
+    height: 100dvh;
     --swiper-navigation-size: 44px;
     --swiper-navigation-top-offset: 50%;
     --swiper-navigation-sides-offset: 10px;
-    --swiper-navigation-color: var(--clr-bg-op);
-
+    --swiper-navigation-color: var(--clr-bg-op);  
     --swiper-pagination-color: var(--clr-bg-op);
     --swiper-pagination-left: auto;
     --swiper-pagination-right: 8px;
@@ -65,24 +63,10 @@ import 'swiper/css/pagination';
     --swiper-pagination-bullet-opacity: 1;
     --swiper-pagination-bullet-horizontal-gap: 4px;
     --swiper-pagination-bullet-vertical-gap: 6px;
-}
-
-
-  body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-
-  .swiper {
-    width: 100%;
-    height: 100%;
   }
 
   .swiper-slide {
+    height: 100%;
     text-align: center;
     font-size: 18px;
     background: #fff;
