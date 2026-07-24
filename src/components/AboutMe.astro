@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import me from '../aboutMeImage/marco_baass.jpg'
 ---
-<article id="about" aria-labelledby="about-title">
+  <article id="about" aria-labelledby="about-title">
 
   <div class="topDivider" role="presentation" aria-hidden="true">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -10,9 +10,11 @@ import me from '../aboutMeImage/marco_baass.jpg'
     </svg>
   </div>
 
-  <h1 class="dark" id="about-title">Über mich</h2>
-  <h2>Event- & Businessfotograf aus Berlin</h3>
-  <div class="aboutMe">
+  <article class="aboutMeTitle">
+    <h1 class="dark" id="about-title">Authentische Fotografie mit Erfahrung und Leidenschaft</h2>
+    <h2>Event- & Businessfotograf aus Berlin</h3>
+  </article>
+  <article class="aboutMe">
     <Image src={ me } alt="Event- und Businessfotograf Marco Baass aus Berlin - Porträtfoto" class='img' />
     <p class="dark">
       Seit über 15 Jahren arbeite und lebe ich als professioneller Fotograf in Berlin und habe mich auf Eventfotografie, Porträtaufnahmen und Auftragsarbeiten für Magazine und Zeitschriften spezialisiert. Mein Ziel ist es, die Essenz eines Moments einzufangen – sei es auf Firmenveranstaltungen, Gala-Events oder in individuellen Porträtsessions. Mit einem besonderen Gespür für die richtige Szene und authentische Emotionen schaffe ich Bilder, die nachhaltig wirken und Geschichten erzählen.
@@ -20,7 +22,7 @@ import me from '../aboutMeImage/marco_baass.jpg'
     <p class="dark">
       Von der Dokumentation von Firmenevents bis zur professionellen Porträtfotografie: Ich sorge dafür, dass Sie und Ihre Veranstaltung im besten Licht erscheinen. Meine langjährige Erfahrung im Bereich der Magazin- und Zeitschriftenfotografie hilft mir dabei, die Atmosphäre einer Szene zu erfassen und Menschen in einem natürlichen, ausdrucksstarken Moment darzustellen. Ich freue mich darauf, meine Leidenschaft und Expertise in Ihre Projekte einzubringen und Ihnen Bilder zu liefern, die die Erinnerung an Ihre wertvollen Augenblicke lebendig halten.
     </p>
-  </div>
+  </article>
 
   <div class="bottomDivider" aria-hidden="true">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -35,12 +37,28 @@ import me from '../aboutMeImage/marco_baass.jpg'
   h1 {
     font-size: var(--step-4);
     font-weight: 600;
-    margin-top: 0rem;
+    max-width: 25ch;
   }
 
   h2 {
     font-size: var(--step-2);
     font-weight: 500;
+  }
+
+  article.aboutMeTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10rem;
+  }
+
+  .aboutMe {
+    margin: var(--space-l) auto;
+    text-wrap: pretty;
+    max-width: 75ch;
+    padding-bottom: 4rem;
   }
 
 
@@ -95,14 +113,7 @@ import me from '../aboutMeImage/marco_baass.jpg'
 
   article {
     background-color: var(--clr-bg);
-    padding: var(--space-xl) 0;
     position: relative;
-  }
-
-  .aboutMe {
-    margin: var(--space-l) auto;
-    text-wrap: pretty;
-    max-width: 75ch;
   }
 
   .img {
