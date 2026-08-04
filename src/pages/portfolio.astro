@@ -46,14 +46,17 @@ const thumbnails = await Promise.all(
 ---
 
 <BaseLayout
-  title="Portfolio | Marco Baaß Fotografie"
-  description="Ausgewählte Eventfotos, Businessportraits und Reportagen aus Berlin."
+  title="Portfolio & Referenzen | Event- und Businessfotos Berlin"
+  description="Bildbeispiele aus Eventfotografie, Businessportraits und Reportagen - ausgewählte Arbeiten von Marco Baaß."
   canonical="https://www.baass-fotografie.de/portfolio/"
 >
   <article class="portfolio-text">
-    <h1>Portfolio für Business-, Event- und Unternehmensfotografie</h1>
-    <p>Jedes Unternehmen erzählt seine eigene Geschichte. In meinem Portfolio finden Sie eine Auswahl professioneller Arbeiten aus den Bereichen Businessfotografie, Eventfotografie, Unternehmenskommunikation und dokumentarische Fotografie. Von authentischen Businessportraits für Geschäftsführer und Teams über die fotografische Begleitung von Konferenzen, Firmenevents und Messen bis hin zu Werbekampagnen für kleine Unternehmen – jede Bildserie entsteht mit dem Ziel, Menschen, Marken und Momente glaubwürdig und wirkungsvoll zu präsentieren.</p>
-    <p>Als Fotograf aus Berlin lege ich Wert auf natürliche Bildsprache, echte Emotionen und eine moderne, hochwertige Bildästhetik. Ob CEO-Portraits, Mitarbeiterfotos, Eventreportagen oder authentische Unternehmensfotografie – meine Aufnahmen helfen Unternehmen dabei, Vertrauen aufzubauen und ihre Marke auf Websites, in sozialen Medien, Presseartikeln und Marketingkampagnen professionell zu präsentieren. Lassen Sie sich von meinen Referenzen inspirieren und entdecken Sie, wie individuelle Fotografie Ihre Unternehmenskommunikation stärken kann.</p>
+    <h1>Ausgewählte Arbeiten für Unternehmen und Events</h1>
+    <p>Jedes Unternehmen erzählt seine eigene Geschichte. In meinem Portfolio finden Sie eine Auswahl professioneller Arbeiten aus den Bereichen Businessfotografie, Eventfotografie, Unternehmenskommunikation und dokumentarische Fotografie. Von authentischen Businessportraits für Geschäftsführer und Teams über die fotografische Begleitung von Konferenzen, Firmenevents und Messen bis hin zu Werbekampagnen für kleine Unternehmen - jede Bildserie entsteht mit dem Ziel, Menschen, Marken und Momente glaubwürdig und wirkungsvoll zu präsentieren.</p>
+    <p>Als Fotograf aus Berlin lege ich Wert auf natürliche Bildsprache, echte Emotionen und eine moderne, hochwertige Bildästhetik. Ob CEO-Portraits, Mitarbeiterfotos, Eventreportagen oder authentische Unternehmensfotografie - meine Aufnahmen helfen Unternehmen dabei, Vertrauen aufzubauen und ihre Marke auf Websites, in sozialen Medien, Presseartikeln und Marketingkampagnen professionell zu präsentieren. Lassen Sie sich von meinen Referenzen inspirieren und entdecken Sie, wie individuelle Fotografie Ihre Unternehmenskommunikation stärken kann.
+    <p>
+      Hier erfahren Sie mehr über mich <a href="/ueber-mich/">über mich</a> und meine Arbeitsweise.
+    </p>
   </article>
   <section class="portfolio">
     <div class="portfolio-container" id="portfolio-container">
@@ -105,6 +108,11 @@ const thumbnails = await Promise.all(
     max-width: 120ch;
     text-align: center;
     margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--clr-accent);
+    text-decoration: underline;
   }
 
   .portfolio {
